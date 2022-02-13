@@ -5,6 +5,7 @@ import styles from "../styles/Home.module.css";
 export default function Home() {
   return (
     <div>
+      yamataso test
       <p>ikk2kk test</p>
     </div>
   );
