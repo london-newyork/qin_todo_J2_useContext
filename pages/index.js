@@ -7,6 +7,9 @@ export default function Home() {
     <div>
       yamataso test
       <p>ikk2kk test</p>
+      
+    <p>geya</p>
+    
     </div>
   );
 }
