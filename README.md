@@ -1,34 +1,77 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Qin Todo J2
 
-## Getting Started
+## メンバー　（4名）
 
-First, run the development server:
+- geya
+- yamataso
+- ikk2kk
+- london-newyork
 
-```bash
-npm run dev
-# or
-yarn dev
+それぞれのメンバーが、週替わりでリーダーおよびレビュアーを担当する。
+Issueも特定のメンバーではなく、全員が切る経験をする。
+
+## 使用技術
+
+- フロントエンド
+  - TypeScript
+  - Next.js
+  - Tailwind CSS
+
+- 状態管理ライブラリ
+
+- バックエンド
+
+## 推奨 VScode 拡張機能
+
+- ES7 + React/Redux/React-Native sippets
+- Code Spell Checker
+- Auto Rename Tag
+- Bracket Pair Colorzier2
+- Color Highlight
+- Git Graph コミットの一覧 → 詳細を閲覧できる
+- Git History ファイルの履歴などを確認できる
+- Todo Tree
+- GitLens
+
+## バージョン情報
+
+volta　(v1.0.5)使用
+
 ```
+    Node: v14.19.0 
+    Yarn: v1.22.17
+```
+`volta list`でプロジェクトにインストールされたバージョンを確認できます。
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## 目的と概要
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- Todoリストを、興味のある技術を使って、スマートホン用アプリ・デスクトップ用のアプリをレスポンシブで作成する。
+- チーム開発を学ぶ。
+  - それぞれのメンバーが、週替わりでリーダーおよびレビュアーを担当して、実務などに生かす。
+  - Issueも特定のメンバーではなく、全員が切る経験をする。
+  - チームでのGitHubの使い方を学ぶ。 
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## 環境構築手順
 
-## Learn More
+1. `git clone リポジトリURL`
+2. リポジトリのディレクトリへ移動
+3. `yarn` // packageがインストールされる。
+4. `yarn dev `
+   上記を実行し、`http://localhost:3000/`
 
-To learn more about Next.js, take a look at the following resources:
+##　エラー回避方法
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `git pull` した時に、node_modulesのエラーでパッケージが入っていないとメッセージがあった場合は、`yarn`をしてみる。
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+#### ブランチ命名規則
 
-## Deploy on Vercel
+issue 番号を必ず含める
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`git checkout -b #22-Install-Recoil`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+#### コミットメッセージ
+
+#issue 番号 + 日本語
+
+ex:　　#22 状態管理ライブラリにRecoilをインストールした
