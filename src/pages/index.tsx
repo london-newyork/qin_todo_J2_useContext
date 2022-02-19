@@ -13,7 +13,7 @@ const Home: NextPage = () => {
         <title>Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h2>Home</h2>
+      <h2 className="p-2 bg-red-400">Home</h2>
       <button onClick={handleClick}>Button</button>
     </Layout>
   );
