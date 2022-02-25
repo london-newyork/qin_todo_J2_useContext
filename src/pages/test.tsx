@@ -9,7 +9,7 @@ const About: NextPage = () => {
         <title>TEST</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h2>TEST PULL</h2>
+      <h2>TEST PULL2</h2>
     </Layout>
   );
 };
