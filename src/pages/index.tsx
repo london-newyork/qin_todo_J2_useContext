@@ -11,7 +11,6 @@ const Home: NextPage = () => {
   const handleClick = () => {
     window.alert("Hello, World!");
   };
-
   return (
     <Layout>
       <Head>
