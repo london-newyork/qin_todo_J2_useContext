@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { AddTask } from "src/components/AddTask";
 import { BtnArea } from "src/components/btn/BtnArea";
 import { SomeTimeBtn } from "src/components/btn/SomeTimeBtn";
 import { TodayBtn } from "src/components/btn/TodayBtn";
 import { TomorrowBtn } from "src/components/btn/TomorrowBtn";
 import { Layout } from "src/components/layout";
+import { NewTask } from "src/components/NewTask";
 import { SomeTimeTitle } from "src/components/Title/SomeTimeTitle";
 import { TodayTitle } from "src/components/Title/TodayTitle";
 import { TomorrowTitle } from "src/components/Title/TomorrowTitle";
@@ -30,7 +30,7 @@ const Home: NextPage = () => {
       <TomorrowTitle />
       <SomeTimeTitle />
       <button onClick={handleClick}>Button</button>
-      <AddTask />
+      <NewTask />
     </Layout>
   );
 };

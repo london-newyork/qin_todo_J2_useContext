@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { VFC } from "react";
 
-export const AddTask: VFC = () => {
+export const NewTask: VFC = () => {
   return (
     // <footer>
     <div className="flex relative flex-row items-center p-2 w-[180px] h-[40px] ">
