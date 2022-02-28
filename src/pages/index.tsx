@@ -5,6 +5,9 @@ import { SomeTimeBtn } from "src/components/btn/SomeTimeBtn";
 import { TodayBtn } from "src/components/btn/TodayBtn";
 import { TomorrowBtn } from "src/components/btn/TomorrowBtn";
 import { Layout } from "src/components/layout";
+import { SomeTimeTitle } from "src/components/Title/SomeTimeTitle";
+import { TodayTitle } from "src/components/Title/TodayTitle";
+import { TomorrowTitle } from "src/components/Title/TomorrowTitle";
 
 const Home: NextPage = () => {
   const handleClick = () => {
@@ -23,6 +26,9 @@ const Home: NextPage = () => {
         <TomorrowBtn />
         <SomeTimeBtn />
       </BtnArea>
+      <TodayTitle />
+      <TomorrowTitle />
+      <SomeTimeTitle />
       <button onClick={handleClick}>Button</button>
     </Layout>
   );
