@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { BtnArea } from "src/components/btn/BtnArea";
+import { RadioBtn } from "src/components/btn/RadioBtn/RadioBtn";
 import { SomeTimeBtn } from "src/components/btn/SomeTimeBtn";
 import { TodayBtn } from "src/components/btn/TodayBtn";
 import { TomorrowBtn } from "src/components/btn/TomorrowBtn";
@@ -24,6 +25,8 @@ const Home: NextPage = () => {
         <SomeTimeBtn />
       </BtnArea>
       <button onClick={handleClick}>Button</button>
+      <RadioBtn>ここにタスクが入ります</RadioBtn>
+      <RadioBtn>ここにタスクが入ります</RadioBtn>
     </Layout>
   );
 };
