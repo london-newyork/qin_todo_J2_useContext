@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { AddTask } from "src/components/AddTask";
 import { BtnArea } from "src/components/btn/BtnArea";
 import { SomeTimeBtn } from "src/components/btn/SomeTimeBtn";
 import { TodayBtn } from "src/components/btn/TodayBtn";
@@ -13,7 +14,6 @@ const Home: NextPage = () => {
   const handleClick = () => {
     window.alert("Hello, World!");
   };
-
   return (
     <Layout>
       <Head>
@@ -30,6 +30,7 @@ const Home: NextPage = () => {
       <TomorrowTitle />
       <SomeTimeTitle />
       <button onClick={handleClick}>Button</button>
+      <AddTask />
     </Layout>
   );
 };
