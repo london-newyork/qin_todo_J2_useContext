@@ -14,7 +14,6 @@ export const Header: VFC = () => {
       w-full
       sm:h-[80px]"
     >
-      {/* <h1>Title</h1> */}
       <nav>
         {/* {items.map(({ href, label }) => {
           return (
@@ -23,61 +22,6 @@ export const Header: VFC = () => {
               </Link>
           );
         })} */}
-        {/* <div
-          className="
-          flex
-          sm:justify-between
-          sm:px-[196px]
-          px-0
-        ">
-          <div
-            className="
-            items-center
-            py-[17px]
-            sm:py-[28px]
-            pl-[137px]
-            sm:pl-0
-            leading-none
-            border-0
-          ">
-            <Image
-              className="
-              my-0
-              leading-none
-              border-0"
-              src={`/qin_todo_logo.svg`}
-              alt='The logo of Qin Todo'
-              width='100px'
-              height='21.34px'
-              quality={75} // 画質, number
-              priority={false} // 表示の優先度, boolean
-              loading={"lazy"} // 遅延ロードするかどうか, "lazy" | "eager"
-              unoptimized={false} // 最適化するかどうか, boolean| "responsive"
-            />
-          </div>
-          <div
-            className="
-            flex
-            items-center
-            py-[10px]
-            sm:py-[22px]
-            pr-[24px]
-            sm:pl-0
-            pl-[78px]
-            ">
-            <Image
-              className="object-cover rounded-full"
-              src={`/shimabu_icon.jpeg`}
-              alt='account_image'
-              width={36}
-              height={36}
-              quality={75} // 画質, number
-              priority={false} // 表示の優先度, boolean
-              loading={"lazy"} // 遅延ロードするかどうか, "lazy" | "eager"
-              unoptimized={false} // 最適化するかどうか, boolean
-              />
-          </div>
-        </div> */}
         <div
           className="
           flex
@@ -106,10 +50,10 @@ export const Header: VFC = () => {
               alt="The logo of Qin Todo"
               width="100px"
               height="21.34px"
-              quality={75} // 画質, number
-              priority={false} // 表示の優先度, boolean
-              loading={"lazy"} // 遅延ロードするかどうか, "lazy" | "eager"
-              unoptimized={false} // 最適化するかどうか, boolean| "responsive"
+              quality={75}
+              priority={false}
+              loading={"lazy"}
+              unoptimized={false}
             />
           </div>
           <div
