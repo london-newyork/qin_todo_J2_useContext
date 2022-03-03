@@ -1,6 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { BtnArea } from "src/components/btn/BtnArea";
+import { RadioBtn } from "src/components/btn/RadioBtn/RadioBtn";
+import { RadioBtnGroup } from "src/components/btn/RadioBtn/RadioBtnGroup";
 import { SomeTimeBtn } from "src/components/btn/SomeTimeBtn";
 import { TodayBtn } from "src/components/btn/TodayBtn";
 import { TomorrowBtn } from "src/components/btn/TomorrowBtn";
@@ -11,9 +13,7 @@ import { TodayTitle } from "src/components/Title/TodayTitle";
 import { TomorrowTitle } from "src/components/Title/TomorrowTitle";
 
 const Home: NextPage = () => {
-  const handleClick = () => {
-    window.alert("Hello, World!");
-  };
+
   return (
     <Layout>
       <Head>
@@ -26,6 +26,17 @@ const Home: NextPage = () => {
         <TomorrowBtn />
         <SomeTimeBtn />
       </BtnArea>
+      <RadioBtnGroup>
+        <RadioBtn variant="rose" value="task1">
+          ここにタスクが入ります
+        </RadioBtn>
+        <RadioBtn variant="orange" value="task2">
+          ここにタスクが入ります
+        </RadioBtn>
+        <RadioBtn variant="yellow" value="task3">
+          ここにタスクが入ります
+        </RadioBtn>
+      </RadioBtnGroup>
       <TodayTitle />
       <TomorrowTitle />
       <SomeTimeTitle />

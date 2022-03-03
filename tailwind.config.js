@@ -27,8 +27,26 @@ module.exports = {
         tertiary: {
           yellow: "#FBBF24",
         },
+        baseGray: {
+          200: "#C2C6D2",
+        },
       },
     },
     plugins: [],
   },
+  variants: {
+    extend: {
+      backgroundColor: ["checkedLabel"],
+      textColor: ["checkedLabel"],
+    },
+  },
+  plugins: [
+    function ({ addVariant, e }) {
+      addVariant("checkedLabel", ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.${e(`radio-button${separator}${className}`)}:checked + label`;
+        });
+      });
+    },
+  ],
 };
