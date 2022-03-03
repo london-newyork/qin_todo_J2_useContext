@@ -13,7 +13,6 @@ import { TodayTitle } from "src/components/Title/TodayTitle";
 import { TomorrowTitle } from "src/components/Title/TomorrowTitle";
 
 const Home: NextPage = () => {
-
   return (
     <Layout>
       <Head>
@@ -40,7 +39,6 @@ const Home: NextPage = () => {
       <TodayTitle />
       <TomorrowTitle />
       <SomeTimeTitle />
-      <button onClick={handleClick}>Button</button>
       <NewTask />
     </Layout>
   );
