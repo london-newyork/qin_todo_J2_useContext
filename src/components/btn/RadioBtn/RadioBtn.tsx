@@ -51,7 +51,7 @@ export const RadioBtn: VFC<Props> = (props) => {
           top-[4px]
           before:left-[5px]
           after:left-[9px]
-          py-[30px]
+          py-4
           px-[5px]
           before:mr-[6px]
           w-auto
