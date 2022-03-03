@@ -7,8 +7,13 @@ import { SomeTimeBtn } from "src/components/btn/SomeTimeBtn";
 import { TodayBtn } from "src/components/btn/TodayBtn";
 import { TomorrowBtn } from "src/components/btn/TomorrowBtn";
 import { Layout } from "src/components/layout";
+import { NewTask } from "src/components/NewTask";
+import { SomeTimeTitle } from "src/components/Title/SomeTimeTitle";
+import { TodayTitle } from "src/components/Title/TodayTitle";
+import { TomorrowTitle } from "src/components/Title/TomorrowTitle";
 
 const Home: NextPage = () => {
+
   return (
     <Layout>
       <Head>
@@ -32,6 +37,11 @@ const Home: NextPage = () => {
           ここにタスクが入ります
         </RadioBtn>
       </RadioBtnGroup>
+      <TodayTitle />
+      <TomorrowTitle />
+      <SomeTimeTitle />
+      <button onClick={handleClick}>Button</button>
+      <NewTask />
     </Layout>
   );
 };
