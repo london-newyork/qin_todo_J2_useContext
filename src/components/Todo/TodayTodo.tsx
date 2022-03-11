@@ -1,8 +1,9 @@
 import type { VFC } from "react";
+import { useCallback } from "react";
 import { useState } from "react";
 import { RadioBtn } from "src/components/btn/RadioBtn/RadioBtn";
 import { RadioBtnGroup } from "src/components/btn/RadioBtn/RadioBtnGroup";
-import { NewTask } from "src/components/NewTask";
+// import { NewTask } from "src/components/NewTask";
 import { TodayTitle } from "src/components/Title/TodayTitle";
 
 type Task = {
@@ -17,53 +18,69 @@ export const TodayTodo: VFC = () => {
 
   const handleChangeTodayTask = (e: string | any) => {
     setTodayTask(() => {
-      return e.target.value;
+      return [e.target.value];
     });
   };
 
-  //下へmapで追加
-  // const AddNewTasks = () => {
+  // console.log(todayTask);
 
-  //   }
-
-  const handleOnKeyPress = (e: any) => {
-    if (e.key == "Enter") {
-      e.preventDefault();
-      //下へmapで追加
-
-      setTodayTask(() => {
-        return e.target.value;
-      });
-    }
+  const getUniqueId = () => {
+    return new Date().getTime().toString(36) + "-" + Math.random().toString(36);
   };
+
+  const id = getUniqueId();
+
+  const handleOnKeyDown = useCallback(
+    (e: any) => {
+      if (e.key == "Enter") {
+        e.preventDefault();
+
+        const AddNewTasks = [e.target.value, ...todayTask];
+        setTodayTask(AddNewTasks);
+      }
+      return;
+    },
+    [todayTask]
+  );
 
   return (
     <div className="flex-1 w-full">
       <TodayTitle />
-      <RadioBtnGroup>
+      {/* <NewTask /> */}
+      <RadioBtnGroup key={id}>
         <RadioBtn variant="rose" value="task1">
-          <ul>
-            {/* <li>
-              <input
-                value={todayTask}
-                onChange={handleChangeTodayTask}
-                onKeyPress={handleOnKeyPress}
-              />
-            </li> */}
-            {/* !prevTask ? */}
-            {todayTask
-              ? todayTask.map((task: Task) => {
-                  return (
-                    <li key={task.id}>
-                      <input value={todayTask} onChange={handleChangeTodayTask} onKeyPress={handleOnKeyPress} />
-                    </li>
-                  );
-                })
-              : undefined}
-          </ul>
+          <input
+            placeholder="タスクを追加する"
+            value={todayTask}
+            onChange={handleChangeTodayTask}
+            onKeyDown={handleOnKeyDown}
+            className="
+              focus:outline-none
+              caret-[#F43F5E]
+              "
+          />
         </RadioBtn>
       </RadioBtnGroup>
-      <NewTask />
+      {todayTask
+        ? todayTask.map(() => {
+            return (
+              <RadioBtnGroup key={id}>
+                <RadioBtn variant="rose" value="task1">
+                  <input
+                    placeholder="タスクを追加する"
+                    value={todayTask}
+                    onChange={handleChangeTodayTask}
+                    onKeyDown={handleOnKeyDown}
+                    className="
+                      focus:outline-none
+                      caret-[#F43F5E]
+                      "
+                  />
+                </RadioBtn>
+              </RadioBtnGroup>
+            );
+          })
+        : undefined}
     </div>
   );
 };
