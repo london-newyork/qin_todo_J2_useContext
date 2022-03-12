@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import { useState } from "react";
 import { RadioBtn } from "src/components/btn/RadioBtn/RadioBtn";
 import { RadioBtnGroup } from "src/components/btn/RadioBtn/RadioBtnGroup";
-// import { NewTask } from "src/components/NewTask";
+import { NewTask } from "src/components/NewTask";
 import { TodayTitle } from "src/components/Title/TodayTitle";
 
 type Task = {
@@ -14,8 +14,7 @@ type Task = {
 };
 
 export const TodayTodo: VFC = () => {
-  const [todayTask, setTodayTask] = useState<SetStateAction<string[] | Task[]>>([""]);
-  const [isOnMouse] = useState<boolean>(false);
+  const [todayTask, setTodayTask] = useState<SetStateAction<string[] | Task[]>>([{}]);
 
   const getUniqueId = () => {
     return new Date().getTime().toString(36) + "-" + Math.random().toString(36);
@@ -38,7 +37,6 @@ export const TodayTodo: VFC = () => {
           },
           ...todayTask,
         ];
-        // const StringifiedObj = JSON.stringify(AddNewTasks, null, '\t' )
         setTodayTask(AddNewTasks);
       }
       return;
@@ -47,6 +45,10 @@ export const TodayTodo: VFC = () => {
   );
 
   // console.log(todayTask);
+
+  const handleChangeIcon = () => {
+    // console.log('clickされたよ');
+  };
 
   const handleOnKeyDown = useCallback(
     (e: any) => {
@@ -61,6 +63,11 @@ export const TodayTodo: VFC = () => {
           ...todayTask,
         ];
         setTodayTask(() => {
+          // return EnteredTask.map((_, i, a) => { return a[a.length -1 - i]})
+          // return EnteredTask.sort((a, b) => {
+          //   return b.grades - a.grades
+          // })
+          // return EnteredTask.sort((a,b)=>{return b[0] - a[0]})
           return EnteredTask;
         });
       }
@@ -72,27 +79,27 @@ export const TodayTodo: VFC = () => {
   return (
     <div className="flex-1 w-full">
       <TodayTitle />
-      {/* <NewTask /> */}
-      {!isOnMouse
-        ? todayTask.map((task: Task) => {
+      {todayTask.length === 0
+        ? null
+        : todayTask.map((item: Task) => {
             return (
-              <RadioBtnGroup key={task.id}>
-                <RadioBtn variant="rose" value="task1">
-                  <input
-                    placeholder="タスクを追加する"
-                    value={todayTask}
-                    onChange={handleChangeTodayTask}
-                    onKeyDown={handleOnKeyDown}
-                    className="
-                      focus:outline-none
-                      caret-[#F43F5E]
-                      "
-                  />
-                </RadioBtn>
+              <RadioBtnGroup key={item.id}>
+                {todayTask.length ? <NewTask /> : <RadioBtn variant="rose" value="task1" />}
+                <input
+                  placeholder="タスクを追加する"
+                  value={item.task}
+                  onClick={handleChangeIcon}
+                  onChange={handleChangeTodayTask}
+                  onKeyDown={handleOnKeyDown}
+                  className="
+                        pt-1
+                        focus:outline-none
+                        caret-[#F43F5E]
+                        "
+                />
               </RadioBtnGroup>
             );
-          })
-        : null}
+          })}
     </div>
   );
 };

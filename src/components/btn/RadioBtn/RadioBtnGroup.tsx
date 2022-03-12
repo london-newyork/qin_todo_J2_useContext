@@ -8,5 +8,9 @@ export const RadioBtnGroupContext = createContext<{
 
 export const RadioBtnGroup: VFC<{ children: ReactNode }> = (props) => {
   const [value, setValue] = useState<string | null>(null);
-  return <RadioBtnGroupContext.Provider value={{ value, setValue }}>{props.children}</RadioBtnGroupContext.Provider>;
+  return (
+    <RadioBtnGroupContext.Provider value={{ value, setValue }}>
+      <div className="flex flex-row items-center px-3 pb-4">{props.children}</div>
+    </RadioBtnGroupContext.Provider>
+  );
 };

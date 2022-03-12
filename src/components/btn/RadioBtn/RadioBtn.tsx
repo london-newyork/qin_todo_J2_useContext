@@ -1,4 +1,4 @@
-import type { ReactNode, VFC } from "react";
+import type { VFC } from "react";
 import { useContext } from "react";
 import { RadioBtnGroupContext } from "src/components/btn/RadioBtn/RadioBtnGroup";
 
@@ -10,7 +10,7 @@ const newColor = {
 
 type Props = {
   variant: keyof typeof newColor; //newColorを型として扱いさらにこの中からkeyとしても使う（newColorの中身が増えた時に便利）
-  children: ReactNode;
+  // children: ReactNode;
   value: string;
 };
 
@@ -29,8 +29,8 @@ export const RadioBtn: VFC<Props> = (props) => {
       <label>
         <input
           className="
-          hidden
-          "
+            hidden
+            "
           value={props.value}
           name="radioBtn"
           type="radio"
@@ -74,9 +74,7 @@ export const RadioBtn: VFC<Props> = (props) => {
           // newColorの中のオブジェクトから取り出すときに使う[] props.variant
           ${isChecked ? `after:opacity-1 ${newColor[props.variant]}` : "after:opacity-0"}
           `}
-        >
-          {props.children}
-        </span>
+        ></span>
       </label>
     </div>
   );
