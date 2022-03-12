@@ -1,4 +1,5 @@
 import type { SetStateAction, VFC } from "react";
+import { useRef } from "react";
 import { useCallback } from "react";
 import { useState } from "react";
 import { RadioBtn } from "src/components/btn/RadioBtn/RadioBtn";
@@ -21,16 +22,26 @@ export const TodayTodo: VFC = () => {
   };
   const id = getUniqueId();
 
+  const renderFlgRef = useRef(true);
+
   const handleChangeTodayTask = useCallback(
     (e: string | any) => {
-      const AddNewTasks = [
-        {
-          id,
-          task: e.target.value,
-        },
-        ...todayTask,
-      ];
-      setTodayTask(AddNewTasks);
+      //再レンダリング防止処理
+      if (renderFlgRef.current) {
+        renderFlgRef.current = false;
+
+        const task = e.target.value;
+        const AddNewTasks = [
+          {
+            id,
+            task,
+          },
+          ...todayTask,
+        ];
+        // const StringifiedObj = JSON.stringify(AddNewTasks, null, '\t' )
+        setTodayTask(AddNewTasks);
+      }
+      return;
     },
     [todayTask]
   );
@@ -39,12 +50,13 @@ export const TodayTodo: VFC = () => {
 
   const handleOnKeyDown = useCallback(
     (e: any) => {
+      const task = e.target.value;
       if (e.key === "Enter") {
         e.preventDefault();
         const EnteredTask = [
           {
             id,
-            task: e.target.value,
+            task,
           },
           ...todayTask,
         ];
