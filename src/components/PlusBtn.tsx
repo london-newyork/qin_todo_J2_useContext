@@ -5,7 +5,7 @@ import type { VFC } from "react";
 //   children: ReactNode;
 // };
 
-export const NewTask: VFC = () => {
+export const PlusBtn: VFC = () => {
   return (
     <div>
       {/* <div className="flex relative flex-row items-center p-2 w-[180px] h-[40px] "> */}

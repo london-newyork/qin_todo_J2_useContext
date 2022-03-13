@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import { useState } from "react";
 import { RadioBtn } from "src/components/btn/RadioBtn/RadioBtn";
 import { RadioBtnGroup } from "src/components/btn/RadioBtn/RadioBtnGroup";
-import { NewTask } from "src/components/NewTask";
+import { PlusBtn } from "src/components/PlusBtn";
 import { TodayTitle } from "src/components/Title/TodayTitle";
 
 type Task = {
@@ -28,16 +28,7 @@ export const TodayTodo: VFC = () => {
       //再レンダリング防止処理
       if (renderFlgRef.current) {
         renderFlgRef.current = false;
-
-        const task = e.target.value;
-        const AddNewTasks = [
-          {
-            id,
-            task,
-          },
-          ...todayTask,
-        ];
-        setTodayTask(AddNewTasks);
+        e.target.value;
       }
       return;
     },
@@ -70,6 +61,7 @@ export const TodayTodo: VFC = () => {
           // return EnteredTask.sort((a,b)=>{return b[0] - a[0]})
           return EnteredTask;
         });
+        // console.log('エンターキーです');
       }
       return;
     },
@@ -83,7 +75,7 @@ export const TodayTodo: VFC = () => {
         ? todayTask.map((item: Task) => {
             return (
               <RadioBtnGroup key={item.id}>
-                {!Object.keys(todayTask).length ? <NewTask /> : <RadioBtn variant="rose" value="task1" />}
+                {!Object.keys(todayTask).length ? <PlusBtn /> : <RadioBtn variant="rose" value="task1" />}
                 <input
                   placeholder="タスクを追加する"
                   value={item.task}
