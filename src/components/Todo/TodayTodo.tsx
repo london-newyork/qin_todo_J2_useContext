@@ -79,12 +79,11 @@ export const TodayTodo: VFC = () => {
   return (
     <div className="flex-1 w-full">
       <TodayTitle />
-      {todayTask.length === 0
-        ? null
-        : todayTask.map((item: Task) => {
+      {Object.keys(todayTask).length
+        ? todayTask.map((item: Task) => {
             return (
               <RadioBtnGroup key={item.id}>
-                {todayTask.length ? <NewTask /> : <RadioBtn variant="rose" value="task1" />}
+                {!Object.keys(todayTask).length ? <NewTask /> : <RadioBtn variant="rose" value="task1" />}
                 <input
                   placeholder="タスクを追加する"
                   value={item.task}
@@ -92,14 +91,15 @@ export const TodayTodo: VFC = () => {
                   onChange={handleChangeTodayTask}
                   onKeyDown={handleOnKeyDown}
                   className="
-                        pt-1
-                        focus:outline-none
-                        caret-[#F43F5E]
-                        "
+                  pt-1
+                  focus:outline-none
+                  caret-[#F43F5E]
+                  "
                 />
               </RadioBtnGroup>
             );
-          })}
+          })
+        : null}
     </div>
   );
 };
