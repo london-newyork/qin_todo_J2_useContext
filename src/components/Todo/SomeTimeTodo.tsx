@@ -1,18 +1,31 @@
-import type { VFC } from "react";
-import { RadioBtn } from "src/components/btn/RadioBtn/RadioBtn";
+import { useState } from "react";
 import { RadioBtnGroup } from "src/components/btn/RadioBtn/RadioBtnGroup";
-import { PlusBtn } from "src/components/PlusBtn";
 import { SomeTimeTitle } from "src/components/Title/SomeTimeTitle";
 
-export const SomeTimeTodo: VFC = () => {
+import { TodoItem } from "./TodoItem/TodoItem";
+
+type Task = {
+  readonly id: string;
+  task?: string;
+};
+
+export const SomeTimeTodo = () => {
+  const [SomeTimeTask, setSomeTimeTask] = useState<Task[]>([]);
   return (
     <div className="flex-1 w-full">
       <SomeTimeTitle />
+      {SomeTimeTask.length
+        ? SomeTimeTask.map((item: Task) => {
+            return (
+              <RadioBtnGroup key={item.id}>
+                <TodoItem task={item.task ? item.task : ""} setTaskList={setSomeTimeTask} />
+              </RadioBtnGroup>
+            );
+          })
+        : null}
       <RadioBtnGroup>
-        <RadioBtn variant="yellow" value="task3" />
-        Prettierをインストール
+        <TodoItem task={""} setTaskList={setSomeTimeTask} />
       </RadioBtnGroup>
-      <PlusBtn />
     </div>
   );
 };
