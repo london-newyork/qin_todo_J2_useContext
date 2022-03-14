@@ -28,12 +28,6 @@ export const TodayTodo: VFC = () => {
       //再レンダリング防止処理
       if (renderFlgRef.current) {
         renderFlgRef.current = false;
-        //  const newText = e.target.value.replace(/\n/g, "")
-        // if (newText.length > 200) {
-        //   alert('入力可能な文字数を超えています。')
-        //   return
-        // }
-        //   setText(newText);
         e.target.value;
       }
       return;
@@ -44,12 +38,12 @@ export const TodayTodo: VFC = () => {
   // console.log(todayTask);
 
   //最大200文字まで書き込み、それ以上は入力文字数制限
-  // const handleCountChange = (e: any) => {
-  //     const truncate = (str:string, length:number) => {
-  //       return str.length <= length ? str: alert('入力可能な文字数を超えています。');
-  //     }
-  //     truncate(e.target.value.length, 200)
-  // }
+  const handleCountChange = (e: any) => {
+    const truncate = (str: string, length: number) => {
+      return str.length >= length ? alert("入力可能な文字数を超えています。") : str;
+    };
+    truncate(e.target.value, 200);
+  };
 
   const handleOnKeyDown = useCallback(
     (e: any) => {
@@ -98,7 +92,7 @@ export const TodayTodo: VFC = () => {
                 <textarea
                   placeholder="タスクを追加する"
                   value={item.task}
-                  // onKeyUp={handleCountChange}
+                  onKeyUp={handleCountChange}
                   maxLength={200}
                   onChange={handleChangeTodayTask}
                   onKeyDown={handleOnKeyDown}
