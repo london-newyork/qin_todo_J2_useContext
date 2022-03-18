@@ -1,4 +1,3 @@
-// import type { KeyboardEventHandler} from "react";
 import { useState } from "react";
 import { CopyBtn } from "src/components/btn/CopyBtn";
 import { RadioBtnGroup } from "src/components/btn/RadioBtn/RadioBtnGroup";
@@ -22,17 +21,18 @@ export const TodayTodo = () => {
   //   alert("Trash");
   // };
 
-  // const onHandleDuplicate = (e: KeyboardEventHandler<HTMLTextAreaElement> | undefined | any,) => {
-  //   e.preventDefault()
-  //新しく配列を作成
-  // const copiedTodayTask = todayTask.map((item: Task) => {
-  //   return (
-  //     { ...item }
-  //     )
-  //   })
-  // console.log(copiedTodayTask, id);
+  // const onHandleDuplicate = (e: KeyboardEventHandler<HTMLTextAreaElement> | undefined | any,id: string ) => {
+  //   // e.preventDefault()
+  // //新しく配列を作成
+  //   const copiedTodayTask = todayTask.map((item: Task) => {
+  //     return (
+  //       { ...item }
+  //       )
+  //     })
+  //   console.log(copiedTodayTask, id);
+  //   console.log('クリックされた');
 
-  //今のtaskのidが新しい配列アイテムのidと一致したら該当taskを返す
+  // //今のtaskのidが新しい配列アイテムのidと一致したら該当taskを返す
   // if (copiedTodayTask.id === id) {
   //   copiedTodayTask.map((copiedItem) => {
   //     return ({ ...copiedItem })
@@ -41,9 +41,24 @@ export const TodayTodo = () => {
   // }
   // }
 
-  //   const handleDuplicate = (e) => {
+  // const handleCopy = (e:any, id: string) => {
   //   e.preventDefault()
-  //   // props.onHandleDuplicate
+  //   console.log('ハンドルコピー');
+  //    const copiedTodayTask = todayTask.map((item: Task) => {
+  //     return (
+  //       { ...item }
+  //       )
+  //     })
+  //   console.log(copiedTodayTask);
+  //   console.log(id);
+
+  // //今のtaskのidが新しい配列アイテムのidと一致したら該当taskを返す
+  // if (copiedTodayTask.id === id) {
+  //   copiedTodayTask.map((copiedItem) => {
+  //     return ({ ...copiedItem })
+  //   })
+  //  return
+  // }
   // }
 
   return (
@@ -56,10 +71,11 @@ export const TodayTodo = () => {
                 <TodoItem task={item.task ? item.task : ""} setTaskList={setTodayTask} />
                 <div className="flex pb-3 m-auto space-x-4">
                   <CopyBtn
-                    // onHandleDuplicate={onHandleDuplicate}
                     id={item.id}
                     task={item.task ? item.task : ""}
                     setTaskList={setTodayTask}
+                    todayTask={todayTask}
+                    setTodayTask={setTodayTask}
                   />
                   <TrashBtn />
                 </div>

@@ -17,7 +17,6 @@ type TodoItemProps = {
 
 export const TodoItem: VFC<TodoItemProps> = (props) => {
   const [task, setTask] = useState<string>("");
-  // const [isCopy, setIsCopy] = useState<boolean>(false)
 
   useEffect(() => {
     setTask(props.task);
@@ -63,7 +62,6 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
   );
 
   return (
-    // <RadioBtnGroup>
     <div className="flex flex-row pb-1 pl-1">
       {task === "" ? <PlusBtn /> : <RadioBtn variant="rose" value="task1" />}
       <textarea
@@ -83,6 +81,5 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
                   "
       />
     </div>
-    // </RadioBtnGroup>
   );
 };
