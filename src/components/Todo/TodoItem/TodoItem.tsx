@@ -1,9 +1,8 @@
 import type { ChangeEvent, Dispatch, KeyboardEventHandler, SetStateAction, VFC } from "react";
 import { useCallback } from "react";
 import { useEffect, useState } from "react";
+import { PlusBtn } from "src/components/btn/PlusBtn";
 import { RadioBtn } from "src/components/btn/RadioBtn/RadioBtn";
-import { RadioBtnGroup } from "src/components/btn/RadioBtn/RadioBtnGroup";
-import { PlusBtn } from "src/components/PlusBtn";
 
 type Task = {
   readonly id: string;
@@ -11,12 +10,14 @@ type Task = {
 };
 
 type TodoItemProps = {
+  // id: string;
   task: string;
   setTaskList: Dispatch<SetStateAction<Task[]>>;
 };
 
 export const TodoItem: VFC<TodoItemProps> = (props) => {
   const [task, setTask] = useState<string>("");
+  // const [isCopy, setIsCopy] = useState<boolean>(false)
 
   useEffect(() => {
     setTask(props.task);
@@ -62,7 +63,8 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
   );
 
   return (
-    <RadioBtnGroup>
+    // <RadioBtnGroup>
+    <div className="flex flex-row pb-1 pl-1">
       {task === "" ? <PlusBtn /> : <RadioBtn variant="rose" value="task1" />}
       <textarea
         placeholder="タスクを追加する"
@@ -80,6 +82,7 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
                   resize-none
                   "
       />
-    </RadioBtnGroup>
+    </div>
+    // </RadioBtnGroup>
   );
 };

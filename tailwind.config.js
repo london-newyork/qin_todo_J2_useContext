@@ -35,6 +35,8 @@ module.exports = {
     plugins: [],
   },
   variants: {
+    backgroundColor: ["group-hover"],
+    textColor: ["group-hover"],
     extend: {
       backgroundColor: ["checkedLabel"],
       textColor: ["checkedLabel"],
