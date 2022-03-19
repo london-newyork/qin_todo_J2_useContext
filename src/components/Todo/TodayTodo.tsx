@@ -75,7 +75,7 @@ export const TodayTodo = () => {
                     task={item.task ? item.task : ""}
                     setTaskList={setTodayTask}
                     todayTask={todayTask}
-                    setTodayTask={setTodayTask}
+                    // setTodayTask={setTodayTask}
                   />
                   <TrashBtn />
                 </div>
