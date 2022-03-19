@@ -25,7 +25,12 @@ export const SomeTimeTodo = () => {
                     setTaskList={setSomeTimeTask}
                     taskList={someTimeTask}
                   />
-                  <TrashBtn />
+                  <TrashBtn
+                    id={item.id}
+                    task={item.task ? item.task : ""}
+                    setTaskList={setSomeTimeTask}
+                    taskList={someTimeTask}
+                  />
                 </div>
               </RadioBtnGroup>
             );

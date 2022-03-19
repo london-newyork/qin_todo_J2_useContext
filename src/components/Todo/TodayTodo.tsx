@@ -25,7 +25,12 @@ export const TodayTodo = () => {
                     setTaskList={setTodayTask}
                     taskList={todayTask}
                   />
-                  <TrashBtn />
+                  <TrashBtn
+                    id={item.id}
+                    task={item.task ? item.task : ""}
+                    setTaskList={setTodayTask}
+                    taskList={todayTask}
+                  />
                 </div>
               </RadioBtnGroup>
             );
