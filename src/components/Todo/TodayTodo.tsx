@@ -23,7 +23,7 @@ export const TodayTodo = () => {
                     id={item.id}
                     task={item.task ? item.task : ""}
                     setTaskList={setTodayTask}
-                    todayTask={todayTask}
+                    taskList={todayTask}
                   />
                   <TrashBtn />
                 </div>

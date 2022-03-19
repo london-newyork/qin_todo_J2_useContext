@@ -7,7 +7,7 @@ type TodoItemProps = {
   id: string;
   task: string;
   setTaskList: Dispatch<SetStateAction<Task[]>>;
-  todayTask: Task[];
+  taskList: Task[];
 };
 
 export const CopyBtn: VFC<TodoItemProps> = (props) => {
