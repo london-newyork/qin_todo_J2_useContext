@@ -15,11 +15,10 @@ export const TrashBtn: VFC<TodoItemProps> = (props) => {
     e.preventDefault();
 
     props.setTaskList((prev) => {
-      //コピー元のリストのすぐ下へコピーしたオブジェクトを入れるため、indexを指定して入れる
       const index = prev.findIndex((t) => {
         return t.id === props.id;
       });
-      prev.splice(index, 1);
+      prev.splice(-index, 1);
 
       return [...prev];
     });
