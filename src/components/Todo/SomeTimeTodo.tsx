@@ -11,7 +11,7 @@ export const SomeTimeTodo = () => {
   const [someTimeTask, setSomeTimeTask] = useState<Task[]>([]);
 
   return (
-    <div className="group flex-1 w-full">
+    <div className="flex-1 w-full">
       <SomeTimeTitle />
       {someTimeTask.length
         ? someTimeTask.map((item: Task) => {

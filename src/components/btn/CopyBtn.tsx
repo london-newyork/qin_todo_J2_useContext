@@ -33,7 +33,7 @@ export const CopyBtn: VFC<TodoItemProps> = (props) => {
 
   return (
     <button onClick={handleDuplicate}>
-      <DocumentDuplicateIcon className="w-5 h-5 opacity-0 group-hover:opacity-100" />
+      <DocumentDuplicateIcon className="w-5 h-5 text-baseGray-200 opacity-0 group-hover:opacity-100" />
     </button>
   );
 };

@@ -10,7 +10,7 @@ import { TodoItem } from "./TodoItem/TodoItem";
 export const TomorrowTodo = () => {
   const [tomorrowTask, setTomorrowTask] = useState<Task[]>([]);
   return (
-    <div className="group flex-1 w-full">
+    <div className="flex-1 w-full">
       <TomorrowTitle />
       {tomorrowTask.length
         ? tomorrowTask.map((item: Task) => {
