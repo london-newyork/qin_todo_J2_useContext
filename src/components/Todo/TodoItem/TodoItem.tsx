@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { PlusBtn } from "src/components/btn/PlusBtn";
 import { RadioBtn } from "src/components/btn/RadioBtn/RadioBtn";
 
-type Task = {
+export type Task = {
   readonly id: string;
   task?: string;
 };

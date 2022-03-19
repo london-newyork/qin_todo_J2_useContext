@@ -4,62 +4,11 @@ import { RadioBtnGroup } from "src/components/btn/RadioBtn/RadioBtnGroup";
 import { TrashBtn } from "src/components/btn/TrashBtn";
 import { TodayTitle } from "src/components/Title/TodayTitle";
 
+import type { Task } from "./TodoItem/TodoItem";
 import { TodoItem } from "./TodoItem/TodoItem";
-
-type Task = {
-  readonly id: string;
-  task?: string;
-};
 
 export const TodayTodo = () => {
   const [todayTask, setTodayTask] = useState<Task[]>([]);
-
-  // const handleDuplicate = () => {
-  //   alert("Duplicate");
-  // };
-  // const handleTrash = () => {
-  //   alert("Trash");
-  // };
-
-  // const onHandleDuplicate = (e: KeyboardEventHandler<HTMLTextAreaElement> | undefined | any,id: string ) => {
-  //   // e.preventDefault()
-  // //新しく配列を作成
-  //   const copiedTodayTask = todayTask.map((item: Task) => {
-  //     return (
-  //       { ...item }
-  //       )
-  //     })
-  //   console.log(copiedTodayTask, id);
-  //   console.log('クリックされた');
-
-  // //今のtaskのidが新しい配列アイテムのidと一致したら該当taskを返す
-  // if (copiedTodayTask.id === id) {
-  //   copiedTodayTask.map((copiedItem) => {
-  //     return ({ ...copiedItem })
-  //   })
-  //  return
-  // }
-  // }
-
-  // const handleCopy = (e:any, id: string) => {
-  //   e.preventDefault()
-  //   console.log('ハンドルコピー');
-  //    const copiedTodayTask = todayTask.map((item: Task) => {
-  //     return (
-  //       { ...item }
-  //       )
-  //     })
-  //   console.log(copiedTodayTask);
-  //   console.log(id);
-
-  // //今のtaskのidが新しい配列アイテムのidと一致したら該当taskを返す
-  // if (copiedTodayTask.id === id) {
-  //   copiedTodayTask.map((copiedItem) => {
-  //     return ({ ...copiedItem })
-  //   })
-  //  return
-  // }
-  // }
 
   return (
     <div className="flex-1 w-full">
@@ -75,7 +24,6 @@ export const TodayTodo = () => {
                     task={item.task ? item.task : ""}
                     setTaskList={setTodayTask}
                     todayTask={todayTask}
-                    // setTodayTask={setTodayTask}
                   />
                   <TrashBtn />
                 </div>
