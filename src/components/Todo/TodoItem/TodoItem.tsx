@@ -10,7 +10,6 @@ export type Task = {
 };
 
 type TodoItemProps = {
-  // id: string;
   task: string;
   setTaskList: Dispatch<SetStateAction<Task[]>>;
 };

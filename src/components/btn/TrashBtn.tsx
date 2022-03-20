@@ -7,20 +7,15 @@ type TodoItemProps = {
   id: string;
   task: string;
   setTaskList: Dispatch<SetStateAction<Task[]>>;
-  taskList: Task[];
+  taskList: Task[] | string;
 };
 
 export const TrashBtn: VFC<TodoItemProps> = (props) => {
-  const handleTrash = (e: any) => {
-    e.preventDefault();
-
+  const handleTrash = () => {
     props.setTaskList((prev) => {
-      const index = prev.findIndex((t) => {
-        return t.id === props.id;
+      return prev.filter((item) => {
+        return item.id !== props.id;
       });
-      prev.splice(-index, 1);
-
-      return [...prev];
     });
   };
   return (
