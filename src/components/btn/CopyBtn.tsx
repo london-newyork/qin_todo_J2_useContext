@@ -20,10 +20,15 @@ export const CopyBtn: VFC<TodoItemProps> = (props) => {
     //複製したリストのために新しくIDを取得
     const newId = getUniqueId();
     props.setTaskList((prev) => {
-      const filteredItem = prev.filter((item) => {
-        item.id === props.id;
+      const index = prev.findIndex((t) => {
+        return t.id === props.id;
       });
-      return filteredItem.concat({ id: newId, task: props.task }, ...prev);
+      const filteredItem = prev.filter((item) => {
+        return item.id === props.id;
+      });
+      const beforeIndexList = prev.slice(0, index);
+      const middleList = filteredItem.concat({ id: newId, task: props.task });
+      return beforeIndexList.concat(middleList, prev.slice(index + 1, prev.length));
     });
   };
   return (
