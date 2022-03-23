@@ -652,7 +652,7 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@mantine/core@^4.0.7":
+"@mantine/core@4.0.7":
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/@mantine/core/-/core-4.0.7.tgz#225b6be81a4bdede204eb24aa30a5029a110920b"
   integrity sha512-HBUlPR7T5C0phuaKuY5SfyMB9hSMatXrqfbf8XE+a/3mRYacqa2wvp2YRGFtLxbLD49bZqybRXc8OR1VtsrZ6A==
@@ -664,12 +664,12 @@
     react-popper "^2.2.5"
     react-textarea-autosize "^8.3.2"
 
-"@mantine/hooks@^4.0.7":
+"@mantine/hooks@4.0.7":
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-4.0.7.tgz#7b6d12994f3bc35e653dd3054efeaef40f8af032"
   integrity sha512-SjP6SZIgri3oMLDZBDYIo+nj9EKAN5OgvCDzREfD9k++BluPk2AfyzCpaZ7mr4+4ZskS6o5FIBvKqvUZYzr9bg==
 
-"@mantine/next@^4.0.7":
+"@mantine/next@4.0.7":
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/@mantine/next/-/next-4.0.7.tgz#2da4ed912237da25c68ee0ca897068af5e83b890"
   integrity sha512-W7TlbFC7yzggAlK+oVxMHk735EEP1vds+nnRfhA344fGcm+/XMtQ+//7SvtmgvPHMBgZ46Liqlp9A2SoVBJVFg==
