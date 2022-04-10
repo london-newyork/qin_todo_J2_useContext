@@ -9,12 +9,15 @@ import { TodoItem } from "./TodoItem/TodoItem";
 
 export const TodayTodo = () => {
   const [todayTask, setTodayTask] = useState<Task[]>([]);
+  const reversedTodayTask = todayTask.map((_, i, a) => {
+    return a[a.length - 1 - i];
+  });
 
   return (
     <div className="flex-1 w-full">
       <TodayTitle />
       {todayTask.length
-        ? todayTask.map((item: Task) => {
+        ? reversedTodayTask.map((item: Task) => {
             return (
               <RadioBtnGroup key={item.id}>
                 <TodoItem task={item.task ? item.task : ""} setTaskList={setTodayTask} />
