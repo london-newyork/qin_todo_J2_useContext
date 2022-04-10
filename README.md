@@ -1,6 +1,9 @@
 # Qin Todo J2
 （こちらのリポジトリは個人開発用でチームとは別です。）
 
+## チームのリポジトリ
+https://github.com/london-newyork/Qin_Todo_J2
+
 ## メンバー　（4 名）
 
 - geya
