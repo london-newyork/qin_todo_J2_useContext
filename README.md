@@ -4,6 +4,10 @@
 ## チームのリポジトリ
 https://github.com/london-newyork/Qin_Todo_J2
 
+## 概要
+* 途中よりチーム開発と並行し、個人開発も進める。
+チームはuseStateで状態管理をし、この個人開発リポジトリではuseContextを試してからGraphQLを使用する。
+
 ## メンバー　（4 名）
 
 - geya
@@ -13,9 +17,6 @@ https://github.com/london-newyork/Qin_Todo_J2
 
 それぞれのメンバーが、週替わりでリーダーおよびレビュアーを担当する。
 Issue も特定のメンバーではなく、全員が切る経験をする。
-
-* 途中よりチーム開発と並行し、個人開発も進める。
-チームはuseStateで状態管理をし、この個人開発リポジトリではuseContextを試してからGraphQLを使用する。
 
 ## 使用技術
 
