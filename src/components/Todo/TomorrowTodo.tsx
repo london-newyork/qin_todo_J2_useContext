@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { CopyBtn } from "src/components/btn/CopyBtn";
+import { PlusBtn } from "src/components/btn/PlusBtn";
+import { RadioBtn } from "src/components/btn/RadioBtn/RadioBtn";
 import { RadioBtnGroup } from "src/components/btn/RadioBtn/RadioBtnGroup";
 import { TrashBtn } from "src/components/btn/TrashBtn";
 import { TomorrowTitle } from "src/components/Title/TomorrowTitle";
@@ -20,8 +22,9 @@ export const TomorrowTodo = () => {
         ? reversedTomorrowTask.map((item: Task) => {
             return (
               <RadioBtnGroup key={item.id}>
+                {item.task === "" ? <PlusBtn /> : <RadioBtn variant="orange" value="task2" />}
                 <TodoItem task={item.task ? item.task : ""} setTaskList={setTomorrowTask} />
-                <div className="flex pb-3 m-auto space-x-4">
+                <div className="flex items-start mt-3 space-x-4">
                   <CopyBtn
                     id={item.id}
                     task={item.task ? item.task : ""}
@@ -40,6 +43,7 @@ export const TomorrowTodo = () => {
           })
         : null}
       <RadioBtnGroup>
+        <PlusBtn />
         <TodoItem task={""} setTaskList={setTomorrowTask} />
       </RadioBtnGroup>
     </div>

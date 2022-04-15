@@ -1,8 +1,9 @@
 import type { ChangeEvent, Dispatch, KeyboardEventHandler, SetStateAction, VFC } from "react";
 import { useCallback } from "react";
 import { useEffect, useState } from "react";
-import { PlusBtn } from "src/components/btn/PlusBtn";
-import { RadioBtn } from "src/components/btn/RadioBtn/RadioBtn";
+import TextareaAutosize from "react-textarea-autosize";
+// import { PlusBtn } from "src/components/btn/PlusBtn";
+// import { RadioBtn } from "src/components/btn/RadioBtn/RadioBtn";
 
 export type Task = {
   readonly id: string;
@@ -16,6 +17,7 @@ type TodoItemProps = {
 
 export const TodoItem: VFC<TodoItemProps> = (props) => {
   const [task, setTask] = useState<string>("");
+  const [isTyping, setIsTyping] = useState<boolean>(false);
 
   useEffect(() => {
     setTask(props.task);
@@ -31,12 +33,6 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
     setTask(task);
   };
 
-  //textareaの高さ自動（WIP）
-  // const calcTextAreaHeight = (task: string) => {
-  //     const rowsNum: number = task.split('\n').length;
-  //     return rowsNum
-  //   }
-
   //最大200文字まで書き込み、それ以上は入力文字数制限
   const handleCountChange = (e: any) => {
     const truncate = (str: string, length: number) => {
@@ -45,9 +41,18 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
     truncate(e.target.value, 200);
   };
 
+  //全角入力の監視
+  const handleCompositionStart = () => {
+    setIsTyping(false);
+  };
+
+  const handleCompositionEnd = () => {
+    setIsTyping(true);
+  };
+
   const handleOnKeyDown = useCallback(
     (e: KeyboardEventHandler<HTMLTextAreaElement> | undefined | any) => {
-      if (e.key === "Enter") {
+      if (e.key === "Enter" && isTyping) {
         const newId = getUniqueId();
         props.setTaskList((prev) => {
           return [{ id: newId, task }, ...prev];
@@ -57,15 +62,15 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
       }
       return;
     },
-    [task, props]
+    [task, props, isTyping]
   );
+
+  // console.log(props);
 
   return (
     <div className="flex flex-row pb-1 pl-1">
-      {task === "" ? <PlusBtn /> : <RadioBtn variant="rose" value="task1" />}
-      <textarea
-        placeholder="タスクを追加する"
-        // rows={calcTextAreaHeight(task)}
+      <TextareaAutosize
+        placeholder={task ? task : "タスクを追加する"}
         value={task}
         maxLength={200}
         onKeyUp={handleCountChange}
@@ -78,6 +83,8 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
                   caret-[#F43F5E]
                   resize-none
                   "
+        onCompositionStart={handleCompositionStart}
+        onCompositionEnd={handleCompositionEnd}
       />
     </div>
   );
