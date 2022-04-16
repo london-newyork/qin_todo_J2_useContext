@@ -2,8 +2,6 @@ import type { ChangeEvent, Dispatch, KeyboardEventHandler, SetStateAction, VFC }
 import { useCallback } from "react";
 import { useEffect, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
-// import { PlusBtn } from "src/components/btn/PlusBtn";
-// import { RadioBtn } from "src/components/btn/RadioBtn/RadioBtn";
 
 export type Task = {
   readonly id: string;
@@ -41,8 +39,12 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
     truncate(e.target.value, 200);
   };
 
+  // const str = /^[A-Za-z0-9]*$/ || /^[\x20-\x7e]*$/
+  // const hasHankakuStr = str.test(task)
+
   //全角入力の監視
   const handleCompositionStart = () => {
+    //半角だったときの動作を書く
     setIsTyping(false);
   };
 
@@ -66,9 +68,10 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
   );
 
   // console.log(props);
+  // console.log(hasHankakuStr);
 
   return (
-    <div className="flex flex-row pb-1 pl-1">
+    <div className="mt-[7px] ml-2 w-[200px]">
       <TextareaAutosize
         placeholder={task ? task : "タスクを追加する"}
         value={task}
@@ -78,7 +81,6 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
         onKeyDown={handleOnKeyDown}
         className="
                   overflow-hidden
-                  mt-3
                   focus:outline-none
                   caret-[#F43F5E]
                   resize-none
