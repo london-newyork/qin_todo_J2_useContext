@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { CopyBtn } from "src/components/btn/CopyTrashBtnGroup/CopyBtn";
-import { CopyTrashBtnGroup } from "src/components/btn/CopyTrashBtnGroup/CopyTrashBtnGroup";
-import { TrashBtn } from "src/components/btn/CopyTrashBtnGroup/TrashBtn";
+import { CopyBtn } from "src/components/btn/CopyBtn";
 import { PlusBtn } from "src/components/btn/PlusBtn";
 import { RadioBtn } from "src/components/btn/RadioBtn/RadioBtn";
 import { RadioBtnGroup } from "src/components/btn/RadioBtn/RadioBtnGroup";
-import { Headline } from "src/components/Title/Headline";
+import { TrashBtn } from "src/components/btn/TrashBtn";
+import { TodayTitle } from "src/components/Title/TodayTitle";
 
 import type { Task } from "./TodoItem/TodoItem";
 import { TodoItem } from "./TodoItem/TodoItem";
@@ -18,14 +17,14 @@ export const TodayTodo = () => {
 
   return (
     <div className="flex-1 w-full">
-      <Headline name="今日する" variant="rose" />
+      <TodayTitle />
       {todayTask.length
         ? reversedTodayTask.map((item: Task) => {
             return (
               <RadioBtnGroup key={item.id}>
                 {item.task === "" ? <PlusBtn /> : <RadioBtn variant="rose" value="task3" />}
                 <TodoItem task={item.task ? item.task : ""} setTaskList={setTodayTask} />
-                <CopyTrashBtnGroup>
+                <div className="flex items-start mt-3 space-x-4">
                   <CopyBtn
                     id={item.id}
                     task={item.task ? item.task : ""}
@@ -38,7 +37,7 @@ export const TodayTodo = () => {
                     setTaskList={setTodayTask}
                     taskList={todayTask}
                   />
-                </CopyTrashBtnGroup>
+                </div>
               </RadioBtnGroup>
             );
           })

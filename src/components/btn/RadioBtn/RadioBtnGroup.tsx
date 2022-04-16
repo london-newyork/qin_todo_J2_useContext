@@ -10,7 +10,7 @@ export const RadioBtnGroup: VFC<{ children: ReactNode }> = (props) => {
   const [value, setValue] = useState<string | null>(null);
   return (
     <RadioBtnGroupContext.Provider value={{ value, setValue }}>
-      <div className="group flex flex-row items-start pl-2 mt-2">{props.children}</div>
+      <div className="group flex flex-row pb-1 pl-1">{props.children}</div>
     </RadioBtnGroupContext.Provider>
   );
 };

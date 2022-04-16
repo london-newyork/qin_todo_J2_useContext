@@ -2,20 +2,17 @@ import type { VFC } from "react";
 import { useContext } from "react";
 import { RadioBtnGroupContext } from "src/components/btn/RadioBtn/RadioBtnGroup";
 
-import type { Props } from "../../type/types";
-import { newColor } from "../../type/types";
+const newColor = {
+  rose: "after:bg-primary-rose before:border-primary-rose",
+  orange: "after:bg-secondary-orange before:border-secondary-orange",
+  yellow: "after:bg-tertiary-yellow before:border-tertiary-yellow",
+} as const;
 
-// export const newColor = {
-//   rose: "after:bg-primary-rose before:border-primary-rose",
-//   orange: "after:bg-secondary-orange before:border-secondary-orange",
-//   yellow: "after:bg-tertiary-yellow before:border-tertiary-yellow",
-// } as const;
-
-// export type Props = {
-//   variant: keyof typeof newColor; //newColorを型として扱いさらにこの中からkeyとしても使う（newColorの中身が増えた時に便利）
-//   // children: ReactNode;
-//   value: string;
-// };
+type Props = {
+  variant: keyof typeof newColor; //newColorを型として扱いさらにこの中からkeyとしても使う（newColorの中身が増えた時に便利）
+  // children: ReactNode;
+  value: string;
+};
 
 export const RadioBtn: VFC<Props> = (props) => {
   const { value, setValue } = useContext(RadioBtnGroupContext);
@@ -51,11 +48,11 @@ export const RadioBtn: VFC<Props> = (props) => {
           after:absolute
           before:top-[45%]
           after:top-[45%]
-          top-0
+          top-[4px]
           before:left-[5px]
           after:left-[9px]
           py-4
-          px-1
+          px-[5px]
           before:mr-[6px]
           w-auto
           before:w-6

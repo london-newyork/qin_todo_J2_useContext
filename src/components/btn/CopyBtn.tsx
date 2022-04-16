@@ -1,7 +1,7 @@
 import { DocumentDuplicateIcon } from "@heroicons/react/outline";
 import type { Dispatch, SetStateAction, VFC } from "react";
 
-import type { Task } from "../../Todo/TodoItem/TodoItem";
+import type { Task } from "../../components/Todo/TodoItem/TodoItem";
 
 type TodoItemProps = {
   id: string;
