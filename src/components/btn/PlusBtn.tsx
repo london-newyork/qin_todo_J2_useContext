@@ -3,9 +3,9 @@ import type { VFC } from "react";
 export const PlusBtn: VFC = () => {
   return (
     <div>
-      <div className="relative py-2 pr-2 pl-1">
-        <button className="box-border flex justify-center items-center">
-          <svg
+      <div className="relative py-2 pr-2 pl-[5px]">
+        <button className="box-border flex justify-center items-center w-6 h-6 bg-[#C2C6D2] rounded-full">
+          {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             className="w-8 h-8 text-gray-300"
             viewBox="0 0 20 20"
@@ -15,6 +15,15 @@ export const PlusBtn: VFC = () => {
               fillRule="evenodd"
               d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
               clipRule="evenodd"
+            />
+          </svg> */}
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M7 7H1.5M7 1.5V7V1.5ZM7 7V12.5V7ZM7 7H12.5H7Z"
+              stroke="white"
+              strokeWidth="1.83333"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </button>
