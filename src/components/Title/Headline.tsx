@@ -1,6 +1,6 @@
 import type { VFC } from "react";
 import type { OnlyColors } from "src/components/type/types";
-import { Color } from "src/components/type/types";
+import { TextColor } from "src/components/type/types";
 
 export type Headline = {
   name: string;
@@ -14,7 +14,7 @@ export const Headline: VFC<Headline & OnlyColors> = (props) => {
         <h1
           className={`font-mono
               text-22px
-              text-${Color[props.variant]}
+              ${TextColor[props.variant]}
             `}
         >
           {props.name}

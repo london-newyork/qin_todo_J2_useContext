@@ -4,14 +4,14 @@ export const newColor = {
   yellow: "after:bg-tertiary-yellow before:border-tertiary-yellow",
 } as const;
 
-export const Color = {
-  rose: "primary-rose",
-  orange: "secondary-orange",
-  yellow: "tertiary-yellow",
+export const TextColor = {
+  rose: "text-primary-rose",
+  orange: "text-secondary-orange",
+  yellow: "text-tertiary-yellow",
 };
 
 export type OnlyColors = {
-  variant: keyof typeof Color;
+  variant: keyof typeof TextColor;
 };
 
 export type Props = {
