@@ -5,11 +5,6 @@ import Image from "next/image";
 import type { VFC } from "react";
 import { useState } from "react";
 
-// const items = [
-//   { href: "/", label: "Home" },
-//   { href: "/about", label: "About" },
-// ];
-
 export const Header: VFC = () => {
   const [isOpened, setIsOpened] = useState(false);
 
@@ -35,7 +30,7 @@ export const Header: VFC = () => {
     <header
       className="
       w-full
-      sm:h-[80px]"
+      sm:h-[56px]"
     >
       <nav>
         {/* {items.map(({ href, label }) => {
@@ -57,11 +52,12 @@ export const Header: VFC = () => {
         >
           <div
             className="
+            flex
             items-center
             py-[17px]
             leading-none
             border-0
-            sm:py-[28px]
+            md:py-[28px]
           "
           >
             <Image

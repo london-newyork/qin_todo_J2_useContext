@@ -1,6 +1,6 @@
 import type { VFC } from "react";
 import { useContext } from "react";
-import { RadioBtnGroupContext } from "src/components/btn/RadioBtn/RadioBtnGroup";
+import { TodoItemGroupContext } from "src/components/Todo/TodoItem/TodoItemGroup";
 
 import type { Props } from "../../type/types";
 import { newColor } from "../../type/types";
@@ -18,9 +18,9 @@ import { newColor } from "../../type/types";
 // };
 
 export const RadioBtn: VFC<Props> = (props) => {
-  const { value, setValue } = useContext(RadioBtnGroupContext);
+  const { value, setValue } = useContext(TodoItemGroupContext);
 
-  // radioBtnGroup内のradioBtn全てのvalueがpropsで渡ってきた、クリックされたボタンのvalueと完全一致するかどうか判定
+  // TodoItemGroup内のradioBtn全てのvalueがpropsで渡ってきた、クリックされたボタンのvalueと完全一致するかどうか判定
   const isChecked = value === props.value;
 
   const handleChange = () => {

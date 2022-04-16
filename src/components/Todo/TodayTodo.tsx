@@ -4,8 +4,8 @@ import { CopyTrashBtnGroup } from "src/components/btn/CopyTrashBtnGroup/CopyTras
 import { TrashBtn } from "src/components/btn/CopyTrashBtnGroup/TrashBtn";
 import { PlusBtn } from "src/components/btn/PlusBtn";
 import { RadioBtn } from "src/components/btn/RadioBtn/RadioBtn";
-import { RadioBtnGroup } from "src/components/btn/RadioBtn/RadioBtnGroup";
 import { Headline } from "src/components/Title/Headline";
+import { TodoItemGroup } from "src/components/Todo/TodoItem/TodoItemGroup";
 
 import type { Task } from "./TodoItem/TodoItem";
 import { TodoItem } from "./TodoItem/TodoItem";
@@ -17,12 +17,12 @@ export const TodayTodo = () => {
   });
 
   return (
-    <div className="flex-1 w-full">
+    <div>
       <Headline name="今日する" variant="rose" />
       {todayTask.length
         ? reversedTodayTask.map((item: Task) => {
             return (
-              <RadioBtnGroup key={item.id}>
+              <TodoItemGroup key={item.id}>
                 {item.task === "" ? <PlusBtn /> : <RadioBtn variant="rose" value="task3" />}
                 <TodoItem task={item.task ? item.task : ""} setTaskList={setTodayTask} />
                 <CopyTrashBtnGroup>
@@ -39,14 +39,14 @@ export const TodayTodo = () => {
                     taskList={todayTask}
                   />
                 </CopyTrashBtnGroup>
-              </RadioBtnGroup>
+              </TodoItemGroup>
             );
           })
         : null}
-      <RadioBtnGroup>
+      <TodoItemGroup>
         <PlusBtn />
         <TodoItem task={""} setTaskList={setTodayTask} />
-      </RadioBtnGroup>
+      </TodoItemGroup>
     </div>
   );
 };

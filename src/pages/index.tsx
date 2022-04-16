@@ -12,7 +12,21 @@ const Home: NextPage = () => {
         <title>Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex flex-col items-start py-6 px-4 space-y-4 w-full min-h-full sm:flex-row sm:justify-between sm:py-16 sm:px-[81px] sm:space-y-0 sm:space-x-4">
+      <div
+        className="
+        flex
+        flex-col
+        gap-y-14
+        mx-4
+        mt-6
+        md:flex-row
+        md:gap-x-28
+        md:gap-y-0
+        md:justify-between
+        md:mx-auto
+        md:mt-[70px]
+        md:w-[1000px]"
+      >
         <TodayTodo />
         <TomorrowTodo />
         <SomeTimeTodo />
