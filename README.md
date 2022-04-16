@@ -1,15 +1,12 @@
 # Qin Todo J2
-
 （こちらのリポジトリは個人開発用でチームとは別です。）
 
 ## チームのリポジトリ
-
 https://github.com/london-newyork/Qin_Todo_J2
 
 ## 概要
-
-- 途中よりチーム開発と並行し、個人開発も進める。
-  チームは useState で状態管理をし、この個人開発リポジトリでは useContext を試してから GraphQL を使用する。
+* 途中よりチーム開発と並行し、個人開発も進める。
+チームはuseStateで状態管理をし、この個人開発リポジトリではuseContextを試してからGraphQLを使用する。
 
 ## メンバー　（4 名）
 
