@@ -73,8 +73,7 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
   return (
     <div className="mt-[7px] ml-2 w-[200px]">
       <TextareaAutosize
-        // placeholder={task ? task : "タスクを追加する"}
-        placeholder={props.plusBtnClick ? (task ? task : "PlusBtnclicked") : "タスクを追加する"}
+        placeholder={task ? task : props.task ? "" : "タスクを追加する"}
         value={task}
         maxLength={200}
         onKeyUp={handleCountChange}
