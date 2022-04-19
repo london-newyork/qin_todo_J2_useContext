@@ -49,6 +49,7 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
   };
   const handleOnKeyDown = useCallback(
     (e: KeyboardEventHandler<HTMLTextAreaElement> | undefined | any) => {
+      if (!task) return;
       if (e.key === "Enter" && !isTyping) {
         const newId = getUniqueId();
         props.setTaskList((prev) => {
