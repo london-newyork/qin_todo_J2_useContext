@@ -1,4 +1,4 @@
-import type { ChangeEvent, Dispatch, KeyboardEventHandler, SetStateAction, VFC } from "react";
+import type { ChangeEvent, Dispatch, KeyboardEventHandler, RefAttributes, SetStateAction, VFC } from "react";
 import { useCallback } from "react";
 import { useEffect, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
@@ -49,11 +49,13 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
   };
 
   const handleOnBlur = (e: KeyboardEventHandler<HTMLTextAreaElement> | undefined | any) => {
-    if (e.key === "Enter" && !task) return;
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      if (e.key === "Enter" && !task) return;
+    }
   };
 
   const handleOnKeyDown = useCallback(
-    (e: KeyboardEventHandler<HTMLTextAreaElement> | undefined | any) => {
+    (e: KeyboardEventHandler<HTMLTextAreaElement> | RefAttributes<HTMLTextAreaElement> | undefined | any) => {
       if (!task) return;
       if (e.key === "Enter" && !isTyping) {
         const newId = getUniqueId();
@@ -72,7 +74,7 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
     <div className="mt-[7px] ml-2 w-[200px]">
       <TextareaAutosize
         // placeholder={task ? task : "タスクを追加する"}
-        placeholder={props.plusBtnClick ? (task ? task : "タスクを追加する") : "タスクを追加する"}
+        placeholder={props.plusBtnClick ? (task ? task : "PlusBtnclicked") : "タスクを追加する"}
         value={task}
         maxLength={200}
         onKeyUp={handleCountChange}
