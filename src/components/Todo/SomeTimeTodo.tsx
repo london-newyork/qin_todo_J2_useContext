@@ -4,8 +4,8 @@ import { CopyTrashBtnGroup } from "src/components/btn/CopyTrashBtnGroup/CopyTras
 import { TrashBtn } from "src/components/btn/CopyTrashBtnGroup/TrashBtn";
 import { PlusBtn } from "src/components/btn/PlusBtn";
 import { RadioBtn } from "src/components/btn/RadioBtn/RadioBtn";
-import { RadioBtnGroup } from "src/components/btn/RadioBtn/RadioBtnGroup";
 import { Headline } from "src/components/Title/Headline";
+import { TodoItemGroup } from "src/components/Todo/TodoItem/TodoItemGroup";
 
 import type { Task } from "./TodoItem/TodoItem";
 import { TodoItem } from "./TodoItem/TodoItem";
@@ -16,14 +16,29 @@ export const SomeTimeTodo = () => {
     return a[a.length - 1 - i];
   });
 
+  const handlePlusBtnAddNewTask = () => {
+    //PlusBtnでonClickして、textareaに入力できるようにする。
+    //TodoItem「タスクを追加する」という文言が消える / カーソルが現れる /入力ができる状態になる
+    //
+    // task ? task : ""
+    // console.log("handlePlusBtnAddNewTask is called");
+  };
+  const plusBtnClick = () => {
+    // console.log("plusBtnClick is called");
+  };
+
   return (
-    <div className="flex-1 w-full">
+    <div>
       <Headline name="今度する" variant="yellow" />
       {someTimeTask.length
         ? reversedSomeTimeTask.map((item: Task) => {
             return (
-              <RadioBtnGroup key={item.id}>
-                {item.task === "" ? <PlusBtn /> : <RadioBtn variant="yellow" value="task3" />}
+              <TodoItemGroup key={item.id}>
+                {item.task === "" ? (
+                  <PlusBtn onClick={handlePlusBtnAddNewTask} />
+                ) : (
+                  <RadioBtn variant="yellow" value="task3" />
+                )}
                 <TodoItem task={item.task ? item.task : ""} setTaskList={setSomeTimeTask} />
                 <CopyTrashBtnGroup>
                   <CopyBtn
@@ -39,14 +54,19 @@ export const SomeTimeTodo = () => {
                     taskList={someTimeTask}
                   />
                 </CopyTrashBtnGroup>
-              </RadioBtnGroup>
+              </TodoItemGroup>
             );
           })
         : null}
-      <RadioBtnGroup>
-        <PlusBtn />
-        <TodoItem task={""} setTaskList={setSomeTimeTask} />
-      </RadioBtnGroup>
+      <TodoItemGroup>
+        {/* PlusBtnクリックでTodoItemが入力スタンバイになる。ただしここはタスクのダミー状態（空）のエリア
+        PlusBtn onClick => TodoItemにpropsが渡る。
+        
+        */}
+        <PlusBtn onClick={handlePlusBtnAddNewTask} />
+        <TodoItem task={""} setTaskList={setSomeTimeTask} plusBtnClick={plusBtnClick} />
+        {/* <TodoItem task={""} setTaskList={setSomeTimeTask} /> */}
+      </TodoItemGroup>
     </div>
   );
 };

@@ -11,6 +11,7 @@ export type Task = {
 type TodoItemProps = {
   task: string;
   setTaskList: Dispatch<SetStateAction<Task[]>>;
+  plusBtnClick?: () => void;
 };
 
 export const TodoItem: VFC<TodoItemProps> = (props) => {
@@ -39,22 +40,16 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
     truncate(e.target.value, 200);
   };
 
-  // const str = /^[A-Za-z0-9]*$/ || /^[\x20-\x7e]*$/
-  // const hasHankakuStr = str.test(task)
-
-  //全角入力の監視
   const handleCompositionStart = () => {
-    //半角だったときの動作を書く
-    setIsTyping(false);
-  };
-
-  const handleCompositionEnd = () => {
     setIsTyping(true);
   };
 
+  const handleCompositionEnd = () => {
+    setIsTyping(false);
+  };
   const handleOnKeyDown = useCallback(
     (e: KeyboardEventHandler<HTMLTextAreaElement> | undefined | any) => {
-      if (e.key === "Enter" && isTyping) {
+      if (e.key === "Enter" && !isTyping) {
         const newId = getUniqueId();
         props.setTaskList((prev) => {
           return [{ id: newId, task }, ...prev];
@@ -67,13 +62,11 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
     [task, props, isTyping]
   );
 
-  // console.log(props);
-  // console.log(hasHankakuStr);
-
   return (
     <div className="mt-[7px] ml-2 w-[200px]">
       <TextareaAutosize
-        placeholder={task ? task : "タスクを追加する"}
+        // placeholder={task ? task : "タスクを追加する"}
+        placeholder={props.plusBtnClick ? (task ? task : "タスクを追加する") : "タスクを追加する"}
         value={task}
         maxLength={200}
         onKeyUp={handleCountChange}
