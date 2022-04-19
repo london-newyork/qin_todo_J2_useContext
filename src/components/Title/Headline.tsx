@@ -12,7 +12,8 @@ export const Headline: VFC<Headline & OnlyColors> = (props) => {
     <div className="ml-4">
       <div>
         <h1
-          className={`font-mono
+          className={`
+              font-mono
               text-22px
               ${TextColor[props.variant]}
             `}

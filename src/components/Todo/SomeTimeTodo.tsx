@@ -16,6 +16,17 @@ export const SomeTimeTodo = () => {
     return a[a.length - 1 - i];
   });
 
+  const handlePlusBtnAddNewTask = () => {
+    //PlusBtnでonClickして、textareaに入力できるようにする。
+    //TodoItem「タスクを追加する」という文言が消える / カーソルが現れる /入力ができる状態になる
+    //
+    // task ? task : ""
+    // console.log("handlePlusBtnAddNewTask is called");
+  };
+  const plusBtnClick = () => {
+    // console.log("plusBtnClick is called");
+  };
+
   return (
     <div>
       <Headline name="今度する" variant="yellow" />
@@ -23,7 +34,11 @@ export const SomeTimeTodo = () => {
         ? reversedSomeTimeTask.map((item: Task) => {
             return (
               <TodoItemGroup key={item.id}>
-                {item.task === "" ? <PlusBtn /> : <RadioBtn variant="yellow" value="task3" />}
+                {item.task === "" ? (
+                  <PlusBtn onClick={handlePlusBtnAddNewTask} />
+                ) : (
+                  <RadioBtn variant="yellow" value="task3" />
+                )}
                 <TodoItem task={item.task ? item.task : ""} setTaskList={setSomeTimeTask} />
                 <CopyTrashBtnGroup>
                   <CopyBtn
@@ -44,8 +59,13 @@ export const SomeTimeTodo = () => {
           })
         : null}
       <TodoItemGroup>
-        <PlusBtn />
-        <TodoItem task={""} setTaskList={setSomeTimeTask} />
+        {/* PlusBtnクリックでTodoItemが入力スタンバイになる。ただしここはタスクのダミー状態（空）のエリア
+        PlusBtn onClick => TodoItemにpropsが渡る。
+        
+        */}
+        <PlusBtn onClick={handlePlusBtnAddNewTask} />
+        <TodoItem task={""} setTaskList={setSomeTimeTask} plusBtnClick={plusBtnClick} />
+        {/* <TodoItem task={""} setTaskList={setSomeTimeTask} /> */}
       </TodoItemGroup>
     </div>
   );

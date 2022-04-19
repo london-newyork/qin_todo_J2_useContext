@@ -11,6 +11,7 @@ export type Task = {
 type TodoItemProps = {
   task: string;
   setTaskList: Dispatch<SetStateAction<Task[]>>;
+  plusBtnClick?: () => void;
 };
 
 export const TodoItem: VFC<TodoItemProps> = (props) => {
@@ -64,7 +65,8 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
   return (
     <div className="mt-[7px] ml-2 w-[200px]">
       <TextareaAutosize
-        placeholder={task ? task : "タスクを追加する"}
+        // placeholder={task ? task : "タスクを追加する"}
+        placeholder={props.plusBtnClick ? (task ? task : "タスクを追加する") : "タスクを追加する"}
         value={task}
         maxLength={200}
         onKeyUp={handleCountChange}
