@@ -18,4 +18,5 @@ export type Props = {
   variant: keyof typeof newColor; //newColorを型として扱いさらにこの中からkeyとしても使う（newColorの中身が増えた時に便利）
   // children: ReactNode;
   value: string;
+  // isComplete: string
 };

@@ -1,4 +1,5 @@
 import type { ChangeEvent, Dispatch, KeyboardEventHandler, SetStateAction, VFC } from "react";
+import { useRef } from "react";
 import { useCallback } from "react";
 import { useEffect, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
@@ -17,6 +18,7 @@ type TodoItemProps = {
 export const TodoItem: VFC<TodoItemProps> = (props) => {
   const [task, setTask] = useState<string>("");
   const [isTyping, setIsTyping] = useState<boolean>(false);
+  const isComplete = useRef();
 
   useEffect(() => {
     setTask(props.task);
@@ -65,19 +67,20 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
   return (
     <div className="mt-[7px] ml-2 w-[200px]">
       <TextareaAutosize
-        // placeholder={task ? task : "タスクを追加する"}
+        name="complete"
         placeholder={props.plusBtnClick ? (task ? task : "タスクを追加する") : "タスクを追加する"}
         value={task}
         maxLength={200}
         onKeyUp={handleCountChange}
         onChange={handleChangeTask}
         onKeyDown={handleOnKeyDown}
-        className="
+        className={`
                   overflow-hidden
                   focus:outline-none
                   caret-[#F43F5E]
                   resize-none
-                  "
+                  ${isComplete ? "line-through" : ""}
+        `}
         onCompositionStart={handleCompositionStart}
         onCompositionEnd={handleCompositionEnd}
       />

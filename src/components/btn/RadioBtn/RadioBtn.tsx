@@ -10,6 +10,7 @@ export const RadioBtn: VFC<Props> = (props) => {
 
   // TodoItemGroup内のradioBtn全てのvalueがpropsで渡ってきた、クリックされたボタンのvalueと完全一致するかどうか判定
   const isChecked = value === props.value;
+  // const [isComplete, setIsComplete ] = useState<boolean>(false)
 
   const handleChange = () => {
     setValue?.(props.value);
@@ -23,7 +24,7 @@ export const RadioBtn: VFC<Props> = (props) => {
             hidden
             "
           value={props.value}
-          name="radioBtn"
+          // name={isComplete ? "complete" : ""}
           type="radio"
           checked={isChecked}
           onChange={handleChange}

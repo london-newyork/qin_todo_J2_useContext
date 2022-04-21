@@ -16,6 +16,10 @@ export const TodayTodo = () => {
     return a[a.length - 1 - i];
   });
 
+  const handleOnClick = () => {
+    //
+  };
+
   return (
     <div>
       <Headline name="今日する" variant="rose" />
@@ -23,7 +27,7 @@ export const TodayTodo = () => {
         ? reversedTodayTask.map((item: Task) => {
             return (
               <TodoItemGroup key={item.id}>
-                {item.task === "" ? <PlusBtn /> : <RadioBtn variant="rose" value="task3" />}
+                {item.task === "" ? <PlusBtn onClick={handleOnClick} /> : <RadioBtn variant="rose" value="task3" />}
                 <TodoItem task={item.task ? item.task : ""} setTaskList={setTodayTask} />
                 <CopyTrashBtnGroup>
                   <CopyBtn
@@ -44,7 +48,7 @@ export const TodayTodo = () => {
           })
         : null}
       <TodoItemGroup>
-        <PlusBtn />
+        <PlusBtn onClick={handleOnClick} />
         <TodoItem task={""} setTaskList={setTodayTask} />
       </TodoItemGroup>
     </div>
