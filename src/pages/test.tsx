@@ -1,40 +1,41 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const Test = () => {
   const inputRef = useRef<HTMLInputElement | any>(null);
+  const [isClicked, setIsClicked] = useState(false);
 
   const handleRefTest = () => {
-    inputRef.current.className = "line-through";
+    setIsClicked(!isClicked);
+    if (isClicked) {
+      inputRef.current.className = "line-through";
+    }
+    if (!isClicked) {
+      inputRef.current.className = "no-underline";
+    }
   };
 
   return (
     <div>
-      {/* <label htmlFor='test'> */}
       <div className="mt-10">
-        {/* <label htmlFor="test2">
-                  input
-                  </label> */}
-
-        <input type="radio" onClick={handleRefTest} className="m-2" value="testtest" />
+        <input type="radio" onClick={handleRefTest} className="m-2" />
         <input
           id="test2"
           ref={inputRef}
           className={`bg-gray-300
-                        `}
+                                `}
         ></input>
+        {/* ${ !isClicked ? "line-through" : ""} */}
       </div>
       <div className="mt-20">
         <label htmlFor="test">
           textarea
           <textarea
             id="test"
-            //   onClick={handleTestTextArea}
             className={`bg-yellow-100
-                                  `}
+            `}
           />
         </label>
       </div>
-      {/* </label> */}
     </div>
   );
 };
