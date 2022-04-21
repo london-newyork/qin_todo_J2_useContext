@@ -49,8 +49,16 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
   const handleCompositionEnd = () => {
     setIsTyping(false);
   };
+
+  const handleOnBlur = (e: KeyboardEventHandler<HTMLTextAreaElement> | undefined | any) => {
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      if (e.key === "Enter" && !task) return;
+    }
+  };
+
   const handleOnKeyDown = useCallback(
-    (e: KeyboardEventHandler<HTMLTextAreaElement> | undefined | any) => {
+    (e: KeyboardEventHandler<HTMLTextAreaElement> | RefAttributes<HTMLTextAreaElement> | undefined | any) => {
+      if (!task) return;
       if (e.key === "Enter" && !isTyping) {
         const newId = getUniqueId();
         props.setTaskList((prev) => {
@@ -75,6 +83,8 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
         onChange={handleChangeTask}
         onKeyDown={handleOnKeyDown}
         className={`
+        onBlur={handleOnBlur}
+        className="
                   overflow-hidden
                   focus:outline-none
                   caret-[#F43F5E]
