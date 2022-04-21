@@ -1,4 +1,4 @@
-import type { ChangeEvent, Dispatch, KeyboardEventHandler, SetStateAction, VFC } from "react";
+import type { ChangeEvent, Dispatch, KeyboardEventHandler, RefAttributes, SetStateAction, VFC } from "react";
 import { useRef } from "react";
 import { useCallback } from "react";
 import { useEffect, useState } from "react";
@@ -82,9 +82,8 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
         onKeyUp={handleCountChange}
         onChange={handleChangeTask}
         onKeyDown={handleOnKeyDown}
-        className={`
         onBlur={handleOnBlur}
-        className="
+        className={`
                   overflow-hidden
                   focus:outline-none
                   caret-[#F43F5E]
