@@ -11,6 +11,7 @@ export type Task = {
 };
 
 type TodoItemProps = {
+  id?: string;
   task: string;
   setTaskList: Dispatch<SetStateAction<Task[]>>;
   plusBtnClick?: () => void;
@@ -60,19 +61,39 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
 
   const handleOnKeyDown = useCallback(
     (e: KeyboardEventHandler<HTMLTextAreaElement> | RefAttributes<HTMLTextAreaElement> | undefined | any) => {
+      //find
       if (!task) return;
-      if (e.key === "Enter" && !isTyping) {
-        const newId = getUniqueId();
-        props.setTaskList((prev) => {
-          return [{ id: newId, task }, ...prev];
-        });
-        //初期化することで前の内容のコピーを防ぐ
-        setTask("");
+      //idがまだない時
+      if (!props.id) {
+        if (e.key === "Enter" && !isTyping) {
+          const newId = getUniqueId();
+          props.setTaskList((prev) => {
+            return [{ id: newId, task }, ...prev];
+          });
+          //初期化することで前の内容のコピーを防ぐ
+          setTask("");
+        }
+        return;
+      } else {
+        //IDがすでにある時(編集時)
+        if (e.key === "Enter" && !isTyping) {
+          const editedTaskList = props.setTaskList((prev: Task[]) => {
+            if (prev.id === props.id) {
+              prev.map((item) => {
+                return { ...item, task: task };
+              });
+              return { ...prev };
+            }
+          });
+          return editedTaskList;
+        }
+        return;
       }
-      return;
     },
     [task, props, isTyping]
   );
+
+  // console.log(props);
 
   return (
     <div className="mt-[7px] ml-2 w-[200px]">
