@@ -23,9 +23,9 @@ export const SomeTimeTodo = () => {
     // task ? task : ""
     // console.log("handlePlusBtnAddNewTask is called");
   };
-  const plusBtnClick = () => {
-    // console.log("plusBtnClick is called");
-  };
+  // const plusBtnClick = () => {
+  //   // console.log("plusBtnClick is called");
+  // };
 
   return (
     <div>
@@ -39,7 +39,7 @@ export const SomeTimeTodo = () => {
                 ) : (
                   <RadioBtn variant="yellow" value="task3" />
                 )}
-                <TodoItem task={item.task ? item.task : ""} setTaskList={setSomeTimeTask} />
+                <TodoItem id={item.id} task={item.task ? item.task : ""} setTaskList={setSomeTimeTask} />
                 <CopyTrashBtnGroup>
                   <CopyBtn
                     id={item.id}
@@ -64,8 +64,7 @@ export const SomeTimeTodo = () => {
         
         */}
         <PlusBtn onClick={handlePlusBtnAddNewTask} />
-        <TodoItem task={""} setTaskList={setSomeTimeTask} plusBtnClick={plusBtnClick} />
-        {/* <TodoItem task={""} setTaskList={setSomeTimeTask} /> */}
+        <TodoItem task={""} setTaskList={setSomeTimeTask} />
       </TodoItemGroup>
     </div>
   );
