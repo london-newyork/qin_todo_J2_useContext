@@ -4,8 +4,9 @@ import { CopyTrashBtnGroup } from "src/components/btn/CopyTrashBtnGroup/CopyTras
 import { TrashBtn } from "src/components/btn/CopyTrashBtnGroup/TrashBtn";
 import { PlusBtn } from "src/components/btn/PlusBtn";
 import { RadioBtn } from "src/components/btn/RadioBtn/RadioBtn";
+import { TodoItemGroup } from "src/components/context/TodoItemGroup";
+import { TodoLayouts } from "src/components/layouts/TodoLayouts";
 import { Headline } from "src/components/Title/Headline";
-import { TodoItemGroup } from "src/components/Todo/TodoItem/TodoItemGroup";
 
 import type { Task } from "./TodoItem/TodoItem";
 import { TodoItem } from "./TodoItem/TodoItem";
@@ -15,9 +16,11 @@ export const TodayTodo = () => {
   const reversedTodayTask = todayTask.map((_, i, a) => {
     return a[a.length - 1 - i];
   });
+
   const handleOnClick = () => {
     //
   };
+
   return (
     <div>
       <Headline name="今日する" variant="rose" />
@@ -25,29 +28,33 @@ export const TodayTodo = () => {
         ? reversedTodayTask.map((item: Task) => {
             return (
               <TodoItemGroup key={item.id}>
-                {item.task === "" ? <PlusBtn onClick={handleOnClick} /> : <RadioBtn variant="rose" value="task3" />}
-                <TodoItem task={item.task ? item.task : ""} setTaskList={setTodayTask} />
-                <CopyTrashBtnGroup>
-                  <CopyBtn
-                    id={item.id}
-                    task={item.task ? item.task : ""}
-                    setTaskList={setTodayTask}
-                    taskList={todayTask}
-                  />
-                  <TrashBtn
-                    id={item.id}
-                    task={item.task ? item.task : ""}
-                    setTaskList={setTodayTask}
-                    taskList={todayTask}
-                  />
-                </CopyTrashBtnGroup>
+                <TodoLayouts>
+                  {item.task === "" ? <PlusBtn onClick={handleOnClick} /> : <RadioBtn variant="rose" value="task3" />}
+                  <TodoItem task={item.task ? item.task : ""} setTaskList={setTodayTask} />
+                  <CopyTrashBtnGroup>
+                    <CopyBtn
+                      id={item.id}
+                      task={item.task ? item.task : ""}
+                      setTaskList={setTodayTask}
+                      taskList={todayTask}
+                    />
+                    <TrashBtn
+                      id={item.id}
+                      task={item.task ? item.task : ""}
+                      setTaskList={setTodayTask}
+                      taskList={todayTask}
+                    />
+                  </CopyTrashBtnGroup>
+                </TodoLayouts>
               </TodoItemGroup>
             );
           })
         : null}
       <TodoItemGroup>
-        <PlusBtn onClick={handleOnClick} />
-        <TodoItem task={""} setTaskList={setTodayTask} />
+        <TodoLayouts>
+          <PlusBtn onClick={handleOnClick} />
+          <TodoItem task={""} setTaskList={setTodayTask} />
+        </TodoLayouts>
       </TodoItemGroup>
     </div>
   );

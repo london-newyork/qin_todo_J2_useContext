@@ -1,19 +1,43 @@
 import type { VFC } from "react";
+import { useState } from "react";
+// import { useRef } from "react";
+// import { useRef, useState } from "react";
 import { useContext } from "react";
-import { TodoItemGroupContext } from "src/components/Todo/TodoItem/TodoItemGroup";
+import { CompleteContext } from "src/components/context/Complete";
+import { TodoItemGroupContext } from "src/components/context/TodoItemGroup";
 
 import type { Props } from "../../type/types";
 import { newColor } from "../../type/types";
 
 export const RadioBtn: VFC<Props> = (props) => {
   const { value, setValue } = useContext(TodoItemGroupContext);
+  // const { handleOnClick } = useContext(CompleteContext);
+  const { completeRef } = useContext(CompleteContext);
 
   // TodoItemGroup内のradioBtn全てのvalueがpropsで渡ってきた、クリックされたボタンのvalueと完全一致するかどうか判定
   const isChecked = value === props.value;
-
+  // const completeRef = useRef<HTMLInputElement | any>(null);
+  const [isClicked, setIsClicked] = useState(false);
   const handleChange = () => {
     setValue?.(props.value);
+    setIsClicked(!isClicked);
+    if (isClicked) {
+      completeRef.current.className = "line-through";
+    }
+    if (!isClicked) {
+      completeRef.current.className = "no-underline";
+    }
   };
+
+  //   const handleClickComplete = () => {
+  //   setIsClicked(!isClicked);
+  //   if (isClicked) {
+  //     completeRef.current.className = "line-through";
+  //   }
+  //   if (!isClicked) {
+  //     completeRef.current.className = "no-underline";
+  //   }
+  // };
 
   return (
     <div>
@@ -23,10 +47,11 @@ export const RadioBtn: VFC<Props> = (props) => {
             hidden
             "
           value={props.value}
-          name="radioBtn"
+          // name={isComplete ? "complete" : ""}
           type="radio"
           checked={isChecked}
           onChange={handleChange}
+          // onClick={handleOnClick}
         />
         <span
           className={`

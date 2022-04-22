@@ -8,20 +8,12 @@ export const TodoItemGroupContext = createContext<{
 
 export const TodoItemGroup: VFC<{ children: ReactNode }> = (props) => {
   const [value, setValue] = useState<string | null>(null);
+
   return (
     <TodoItemGroupContext.Provider value={{ value, setValue }}>
-      <div
-        className="
-        group
-        flex
-        flex-row
-        items-start
-        pl-2
-        mt-2
-        w-[12rem]"
-      >
-        {props.children}
-      </div>
+      <label htmlFor="complete">
+        <div>{props.children}</div>
+      </label>
     </TodoItemGroupContext.Provider>
   );
 };

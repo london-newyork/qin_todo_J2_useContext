@@ -1,7 +1,9 @@
 import type { ChangeEvent, Dispatch, KeyboardEventHandler, RefAttributes, SetStateAction, VFC } from "react";
+import { useContext } from "react";
 import { useCallback } from "react";
 import { useEffect, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
+import { CompleteContext } from "src/components/context/Complete";
 
 export type Task = {
   readonly id: string;
@@ -12,12 +14,14 @@ type TodoItemProps = {
   id?: string;
   task: string;
   setTaskList: Dispatch<SetStateAction<Task[]>>;
-  // plusBtnClick?: () => void;
+  plusBtnClick?: () => void;
+  // completeRef: Ref<HTMLTextAreaElement> | undefined
 };
 
 export const TodoItem: VFC<TodoItemProps> = (props) => {
   const [task, setTask] = useState<string>("");
   const [isTyping, setIsTyping] = useState<boolean>(false);
+  const { completeRef } = useContext(CompleteContext);
 
   useEffect(() => {
     setTask(props.task);
@@ -94,19 +98,21 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
   return (
     <div className="mt-[7px] ml-2 w-[200px]">
       <TextareaAutosize
-        placeholder={task ? task : props.task ? "" : "タスクを追加する"}
+        name="complete"
+        placeholder={props.plusBtnClick ? (task ? task : "タスクを追加する") : "タスクを追加する"}
         value={task}
+        ref={completeRef} //CompleteContextから渡ってくる
         maxLength={200}
         onKeyUp={handleCountChange}
         onChange={handleChangeTask}
         onKeyDown={handleOnKeyDown}
         onBlur={handleOnBlur}
-        className="
+        className={`
                   overflow-hidden
                   focus:outline-none
                   caret-[#F43F5E]
                   resize-none
-                  "
+        `}
         onCompositionStart={handleCompositionStart}
         onCompositionEnd={handleCompositionEnd}
       />
