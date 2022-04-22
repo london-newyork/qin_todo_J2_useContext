@@ -12,18 +12,7 @@ export const TodoItemGroup: VFC<{ children: ReactNode }> = (props) => {
   return (
     <TodoItemGroupContext.Provider value={{ value, setValue }}>
       <label htmlFor="complete">
-        <div
-          className="
-          group
-          flex
-          flex-row
-          items-start
-          pl-2
-          mt-2
-          w-[12rem]"
-        >
-          {props.children}
-        </div>
+        <div>{props.children}</div>
       </label>
     </TodoItemGroupContext.Provider>
   );

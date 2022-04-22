@@ -1,32 +1,32 @@
 import { useRef, useState } from "react";
 
 const Test = () => {
-  const inputRef = useRef<HTMLInputElement | any>(null);
+  const completeRef = useRef<HTMLTextAreaElement | any>(null);
   const [isClicked, setIsClicked] = useState(false);
 
-  const handleRefTest = () => {
+  //
+  const handleClickComplete = () => {
     setIsClicked(!isClicked);
     if (isClicked) {
-      inputRef.current.className = "line-through";
+      completeRef.current.className = "line-through";
     }
     if (!isClicked) {
-      inputRef.current.className = "no-underline";
+      completeRef.current.className = "no-underline";
     }
   };
 
   return (
     <div>
       <div className="mt-10">
-        <input type="radio" onClick={handleRefTest} className="m-2" />
-        <input
+        <input type="radio" onClick={handleClickComplete} className="m-2" />
+        <textarea
           id="test2"
-          ref={inputRef}
+          ref={completeRef}
           className={`bg-gray-300
                                 `}
-        ></input>
-        {/* ${ !isClicked ? "line-through" : ""} */}
+        ></textarea>
       </div>
-      <div className="mt-20">
+      {/* <div className="mt-20">
         <label htmlFor="test">
           textarea
           <textarea
@@ -35,7 +35,7 @@ const Test = () => {
             `}
           />
         </label>
-      </div>
+      </div> */}
     </div>
   );
 };

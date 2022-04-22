@@ -4,6 +4,8 @@ import { CopyTrashBtnGroup } from "src/components/btn/CopyTrashBtnGroup/CopyTras
 import { TrashBtn } from "src/components/btn/CopyTrashBtnGroup/TrashBtn";
 import { PlusBtn } from "src/components/btn/PlusBtn";
 import { RadioBtn } from "src/components/btn/RadioBtn/RadioBtn";
+import { Complete } from "src/components/context/Complete";
+import { TodoLayouts } from "src/components/layouts/TodoLayouts";
 import { Headline } from "src/components/Title/Headline";
 import { TodoItemGroup } from "src/components/Todo/TodoItem/TodoItemGroup";
 
@@ -17,14 +19,7 @@ export const SomeTimeTodo = () => {
   });
 
   const handlePlusBtnAddNewTask = () => {
-    //PlusBtnでonClickして、textareaに入力できるようにする。
-    //TodoItem「タスクを追加する」という文言が消える / カーソルが現れる /入力ができる状態になる
     //
-    // task ? task : ""
-    // console.log("handlePlusBtnAddNewTask is called");
-  };
-  const plusBtnClick = () => {
-    // console.log("plusBtnClick is called");
   };
 
   return (
@@ -34,38 +29,39 @@ export const SomeTimeTodo = () => {
         ? reversedSomeTimeTask.map((item: Task) => {
             return (
               <TodoItemGroup key={item.id}>
-                {item.task === "" ? (
-                  <PlusBtn onClick={handlePlusBtnAddNewTask} />
-                ) : (
-                  <RadioBtn variant="yellow" value="task3" />
-                )}
-                <TodoItem task={item.task ? item.task : ""} setTaskList={setSomeTimeTask} />
-                <CopyTrashBtnGroup>
-                  <CopyBtn
-                    id={item.id}
-                    task={item.task ? item.task : ""}
-                    setTaskList={setSomeTimeTask}
-                    taskList={someTimeTask}
-                  />
-                  <TrashBtn
-                    id={item.id}
-                    task={item.task ? item.task : ""}
-                    setTaskList={setSomeTimeTask}
-                    taskList={someTimeTask}
-                  />
-                </CopyTrashBtnGroup>
+                <Complete>
+                  <TodoLayouts>
+                    {item.task === "" ? (
+                      <PlusBtn onClick={handlePlusBtnAddNewTask} />
+                    ) : (
+                      <RadioBtn variant="yellow" value="task3" />
+                    )}
+                    <TodoItem task={item.task ? item.task : ""} setTaskList={setSomeTimeTask} />
+                    <CopyTrashBtnGroup>
+                      <CopyBtn
+                        id={item.id}
+                        task={item.task ? item.task : ""}
+                        setTaskList={setSomeTimeTask}
+                        taskList={someTimeTask}
+                      />
+                      <TrashBtn
+                        id={item.id}
+                        task={item.task ? item.task : ""}
+                        setTaskList={setSomeTimeTask}
+                        taskList={someTimeTask}
+                      />
+                    </CopyTrashBtnGroup>
+                  </TodoLayouts>
+                </Complete>
               </TodoItemGroup>
             );
           })
         : null}
       <TodoItemGroup>
-        {/* PlusBtnクリックでTodoItemが入力スタンバイになる。ただしここはタスクのダミー状態（空）のエリア
-        PlusBtn onClick => TodoItemにpropsが渡る。
-        
-        */}
-        <PlusBtn onClick={handlePlusBtnAddNewTask} />
-        <TodoItem task={""} setTaskList={setSomeTimeTask} plusBtnClick={plusBtnClick} />
-        {/* <TodoItem task={""} setTaskList={setSomeTimeTask} /> */}
+        <TodoLayouts>
+          <PlusBtn onClick={handlePlusBtnAddNewTask} />
+          <TodoItem task={""} setTaskList={setSomeTimeTask} />
+        </TodoLayouts>
       </TodoItemGroup>
     </div>
   );
