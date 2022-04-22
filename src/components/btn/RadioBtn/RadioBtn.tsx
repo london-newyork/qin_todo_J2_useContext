@@ -4,7 +4,7 @@ import { useState } from "react";
 // import { useRef, useState } from "react";
 import { useContext } from "react";
 import { CompleteContext } from "src/components/context/Complete";
-import { TodoItemGroupContext } from "src/components/Todo/TodoItem/TodoItemGroup";
+import { TodoItemGroupContext } from "src/components/context/TodoItemGroup";
 
 import type { Props } from "../../type/types";
 import { newColor } from "../../type/types";

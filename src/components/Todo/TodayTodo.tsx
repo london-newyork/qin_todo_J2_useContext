@@ -4,9 +4,9 @@ import { CopyTrashBtnGroup } from "src/components/btn/CopyTrashBtnGroup/CopyTras
 import { TrashBtn } from "src/components/btn/CopyTrashBtnGroup/TrashBtn";
 import { PlusBtn } from "src/components/btn/PlusBtn";
 import { RadioBtn } from "src/components/btn/RadioBtn/RadioBtn";
+import { TodoItemGroup } from "src/components/context/TodoItemGroup";
 import { TodoLayouts } from "src/components/layouts/TodoLayouts";
 import { Headline } from "src/components/Title/Headline";
-import { TodoItemGroup } from "src/components/Todo/TodoItem/TodoItemGroup";
 
 import type { Task } from "./TodoItem/TodoItem";
 import { TodoItem } from "./TodoItem/TodoItem";
