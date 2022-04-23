@@ -1,6 +1,6 @@
 import type { ReactNode, VFC } from "react";
 
-export const CopyTrashBtnGroup: VFC<{ children: ReactNode }> = (props) => {
+export const CopyTrashBtnLayouts: VFC<{ children: ReactNode }> = (props) => {
   return (
     <div>
       <div
