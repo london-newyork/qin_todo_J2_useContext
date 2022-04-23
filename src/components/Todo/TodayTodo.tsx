@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { CopyBtn } from "src/components/btn/CopyTrashBtnGroup/CopyBtn";
-import { CopyTrashBtnGroup } from "src/components/btn/CopyTrashBtnGroup/CopyTrashBtnGroup";
 import { TrashBtn } from "src/components/btn/CopyTrashBtnGroup/TrashBtn";
 import { PlusBtn } from "src/components/btn/PlusBtn";
 import { RadioBtn } from "src/components/btn/RadioBtn/RadioBtn";
 import { TodoItemGroup } from "src/components/context/TodoItemGroup";
+import { CopyTrashBtnLayouts } from "src/components/layouts/CopyTrashBtnLayouts";
 import { TodoLayouts } from "src/components/layouts/TodoLayouts";
 import { Headline } from "src/components/Title/Headline";
 
@@ -31,7 +31,7 @@ export const TodayTodo = () => {
                 <TodoLayouts>
                   {item.task === "" ? <PlusBtn onClick={handleOnClick} /> : <RadioBtn variant="rose" value="task3" />}
                   <TodoItem task={item.task ? item.task : ""} setTaskList={setTodayTask} />
-                  <CopyTrashBtnGroup>
+                  <CopyTrashBtnLayouts>
                     <CopyBtn
                       id={item.id}
                       task={item.task ? item.task : ""}
@@ -44,7 +44,7 @@ export const TodayTodo = () => {
                       setTaskList={setTodayTask}
                       taskList={todayTask}
                     />
-                  </CopyTrashBtnGroup>
+                  </CopyTrashBtnLayouts>
                 </TodoLayouts>
               </TodoItemGroup>
             );
