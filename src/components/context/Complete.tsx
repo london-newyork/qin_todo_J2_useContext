@@ -3,11 +3,12 @@ import { useRef } from "react";
 import { createContext } from "react";
 
 export const CompleteContext = createContext<{
+  // completeRef: Ref<HTMLTextAreaElement> | undefined|  HTMLTextAreaElement | RefObject<HTMLTextAreaElement> | null;
   completeRef: Ref<HTMLTextAreaElement> | undefined;
 }>({ completeRef: undefined });
 
 export const Complete: VFC<{ children: ReactNode }> = (props) => {
-  const completeRef = useRef<HTMLTextAreaElement | any>(null);
+  const completeRef = useRef<HTMLTextAreaElement | null>(null);
 
   return (
     <CompleteContext.Provider value={{ completeRef }}>

@@ -57,12 +57,6 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
     }
   };
 
-  //やりたいこと
-  //編集後のリストの下に既存タスクがあったら、エンターでその間に新規リストを追加したい
-  //今の挙動
-  //編集後エンターで空タスクが一個追加されてしまう。
-  //新規追加リストエンターでなぜかeditedを通ってくる。enter3回押さないと下に新規リストが追加されない
-
   const handleOnKeyDown = useCallback(
     (e: KeyboardEventHandler<HTMLTextAreaElement> | RefAttributes<HTMLTextAreaElement> | undefined | any) => {
       const newId = getUniqueId();

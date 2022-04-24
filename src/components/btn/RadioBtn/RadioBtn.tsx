@@ -1,7 +1,5 @@
 import type { VFC } from "react";
 import { useState } from "react";
-// import { useRef } from "react";
-// import { useRef, useState } from "react";
 import { useContext } from "react";
 import { CompleteContext } from "src/components/context/Complete";
 import { TodoItemGroupContext } from "src/components/context/TodoItemGroup";
@@ -21,7 +19,7 @@ export const RadioBtn: VFC<Props> = (props) => {
   };
 
   const handleClickComplete = () => {
-    const hasEditedIsClicked = !isClicked; //true
+    const hasEditedIsClicked = !isClicked;
     setIsClicked(hasEditedIsClicked);
     if (completeRef !== null && completeRef !== undefined && hasEditedIsClicked) {
       completeRef.current.className = "line-through focus:outline-none overflow-hidden caret-[#F43F5E] resize-none";
