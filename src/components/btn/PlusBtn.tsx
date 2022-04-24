@@ -1,7 +1,7 @@
 import type { MouseEventHandler, VFC } from "react";
 
 type PlusBtn = {
-  onClick: MouseEventHandler<HTMLButtonElement> | undefined;
+  onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
 };
 
 export const PlusBtn: VFC<PlusBtn> = (props) => {

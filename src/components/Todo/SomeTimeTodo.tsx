@@ -18,9 +18,9 @@ export const SomeTimeTodo = () => {
     return a[a.length - 1 - i];
   });
 
-  const handlePlusBtnAddNewTask = () => {
-    //
-  };
+  // const handlePlusBtnAddNewTask = () => {
+  //   //
+  // };
 
   return (
     <div>
@@ -31,12 +31,8 @@ export const SomeTimeTodo = () => {
               <TodoItemGroup key={item.id}>
                 <Complete>
                   <TodoLayouts>
-                    {item.task === "" ? (
-                      <PlusBtn onClick={handlePlusBtnAddNewTask} />
-                    ) : (
-                      <RadioBtn variant="yellow" value="task3" />
-                    )}
-                    <TodoItem task={item.task ? item.task : ""} setTaskList={setSomeTimeTask} />
+                    <RadioBtn variant="yellow" value="task3" />
+                    <TodoItem id={item.id} task={item.task ? item.task : ""} setTaskList={setSomeTimeTask} />
                     <CopyTrashBtnLayouts>
                       <CopyBtn
                         id={item.id}
@@ -59,7 +55,7 @@ export const SomeTimeTodo = () => {
         : null}
       <TodoItemGroup>
         <TodoLayouts>
-          <PlusBtn onClick={handlePlusBtnAddNewTask} />
+          <PlusBtn />
           <TodoItem task={""} setTaskList={setSomeTimeTask} />
         </TodoLayouts>
       </TodoItemGroup>

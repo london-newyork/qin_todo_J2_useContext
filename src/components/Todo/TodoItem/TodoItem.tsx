@@ -15,7 +15,6 @@ type TodoItemProps = {
   task: string;
   setTaskList: Dispatch<SetStateAction<Task[]>>;
   plusBtnClick?: () => void;
-  // completeRef: Ref<HTMLTextAreaElement> | undefined
 };
 
 export const TodoItem: VFC<TodoItemProps> = (props) => {
@@ -61,12 +60,10 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
 
   const handleOnKeyDown = useCallback(
     (e: KeyboardEventHandler<HTMLTextAreaElement> | RefAttributes<HTMLTextAreaElement> | undefined | any) => {
-      //find
-      if (!task) return;
-      //idがまだない時
+      //idがまだない時(デフォルトのタスク)
+      const newId = getUniqueId();
       if (!props.id) {
         if (e.key === "Enter" && !isTyping) {
-          const newId = getUniqueId();
           props.setTaskList((prev) => {
             return [{ id: newId, task }, ...prev];
           });
@@ -77,15 +74,17 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
       } else {
         //IDがすでにある時(編集時)
         if (e.key === "Enter" && !isTyping) {
-          const editedTaskList = props.setTaskList((prev: Task[]) => {
-            if (prev.id === props.id) {
-              prev.map((item) => {
+          props.setTaskList((prev: Task[]) => {
+            const editedTask = prev.map((item) => {
+              if (item.id === props.id) {
                 return { ...item, task: task };
-              });
-              return { ...prev };
-            }
+              }
+              //編集後のタスクを追加
+              return item;
+            });
+            //エンターキー押したらさらにその下へ新しくタスクを追加
+            return [{ id: newId, task: "" }, ...editedTask];
           });
-          return editedTaskList;
         }
         return;
       }
@@ -93,15 +92,13 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
     [task, props, isTyping]
   );
 
-  // console.log(props);
-
   return (
     <div className="mt-[7px] ml-2 w-[200px]">
       <TextareaAutosize
         name="complete"
-        placeholder={props.plusBtnClick ? (task ? task : "タスクを追加する") : "タスクを追加する"}
+        placeholder={props.id ? "" : task ? task : "タスクを追加する"}
         value={task}
-        ref={completeRef} //CompleteContextから渡ってくる
+        ref={completeRef}
         maxLength={200}
         onKeyUp={handleCountChange}
         onChange={handleChangeTask}

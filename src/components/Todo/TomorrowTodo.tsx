@@ -3,6 +3,7 @@ import { CopyBtn } from "src/components/btn/CopyTrashBtnGroup/CopyBtn";
 import { TrashBtn } from "src/components/btn/CopyTrashBtnGroup/TrashBtn";
 import { PlusBtn } from "src/components/btn/PlusBtn";
 import { RadioBtn } from "src/components/btn/RadioBtn/RadioBtn";
+import { Complete } from "src/components/context/Complete";
 import { TodoItemGroup } from "src/components/context/TodoItemGroup";
 import { CopyTrashBtnLayouts } from "src/components/layouts/CopyTrashBtnLayouts";
 import { TodoLayouts } from "src/components/layouts/TodoLayouts";
@@ -17,6 +18,10 @@ export const TomorrowTodo = () => {
     return a[a.length - 1 - i];
   });
 
+  //   const handleOnClick = () => {
+  //   //
+  // };
+
   return (
     <div>
       <Headline name="明日する" variant="orange" />
@@ -24,24 +29,26 @@ export const TomorrowTodo = () => {
         ? reversedTomorrowTask.map((item: Task) => {
             return (
               <TodoItemGroup key={item.id}>
-                <TodoLayouts>
-                  {item.task === "" ? <PlusBtn /> : <RadioBtn variant="orange" value="task2" />}
-                  <TodoItem task={item.task ? item.task : ""} setTaskList={setTomorrowTask} />
-                  <CopyTrashBtnLayouts>
-                    <CopyBtn
-                      id={item.id}
-                      task={item.task ? item.task : ""}
-                      setTaskList={setTomorrowTask}
-                      taskList={tomorrowTask}
-                    />
-                    <TrashBtn
-                      id={item.id}
-                      task={item.task ? item.task : ""}
-                      setTaskList={setTomorrowTask}
-                      taskList={tomorrowTask}
-                    />
-                  </CopyTrashBtnLayouts>
-                </TodoLayouts>
+                <Complete>
+                  <TodoLayouts>
+                    <RadioBtn variant="yellow" value="task3" />
+                    <TodoItem id={item.id} task={item.task ? item.task : ""} setTaskList={setTomorrowTask} />
+                    <CopyTrashBtnLayouts>
+                      <CopyBtn
+                        id={item.id}
+                        task={item.task ? item.task : ""}
+                        setTaskList={setTomorrowTask}
+                        taskList={tomorrowTask}
+                      />
+                      <TrashBtn
+                        id={item.id}
+                        task={item.task ? item.task : ""}
+                        setTaskList={setTomorrowTask}
+                        taskList={tomorrowTask}
+                      />
+                    </CopyTrashBtnLayouts>
+                  </TodoLayouts>
+                </Complete>
               </TodoItemGroup>
             );
           })
