@@ -53,12 +53,14 @@ export const TomorrowTodo = () => {
             );
           })
         : null}
-      <TodoItemGroup>
-        <TodoLayouts>
-          <PlusBtn />
-          <TodoItem task={""} setTaskList={setTomorrowTask} />
-        </TodoLayouts>
-      </TodoItemGroup>
+      {tomorrowTask.length === 0 ? (
+        <TodoItemGroup>
+          <TodoLayouts>
+            <PlusBtn />
+            <TodoItem task={""} setTaskList={setTomorrowTask} />
+          </TodoLayouts>
+        </TodoItemGroup>
+      ) : null}
     </div>
   );
 };

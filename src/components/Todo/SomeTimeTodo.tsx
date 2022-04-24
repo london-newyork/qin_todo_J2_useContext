@@ -53,12 +53,14 @@ export const SomeTimeTodo = () => {
             );
           })
         : null}
-      <TodoItemGroup>
-        <TodoLayouts>
-          <PlusBtn />
-          <TodoItem task={""} setTaskList={setSomeTimeTask} />
-        </TodoLayouts>
-      </TodoItemGroup>
+      {someTimeTask.length === 0 ? (
+        <TodoItemGroup>
+          <TodoLayouts>
+            <PlusBtn />
+            <TodoItem task={""} setTaskList={setSomeTimeTask} />
+          </TodoLayouts>
+        </TodoItemGroup>
+      ) : null}
     </div>
   );
 };

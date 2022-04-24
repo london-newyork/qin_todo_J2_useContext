@@ -21,15 +21,14 @@ export const RadioBtn: VFC<Props> = (props) => {
   };
 
   const handleClickComplete = () => {
-    setValue?.(props.value);
     const hasEditedIsClicked = !isClicked; //true
     setIsClicked(hasEditedIsClicked);
     if (completeRef !== null && completeRef !== undefined && hasEditedIsClicked) {
-      completeRef.current.className = "line-through";
+      completeRef.current.className = "line-through focus:outline-none overflow-hidden caret-[#F43F5E] resize-none";
     }
     //false
     if (completeRef !== null && completeRef !== undefined && !hasEditedIsClicked) {
-      completeRef.current.className = "no-underline";
+      completeRef.current.className = "no-underline focus:outline-none overflow-hidden caret-[#F43F5E] resize-none";
     }
   };
 

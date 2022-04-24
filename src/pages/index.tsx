@@ -19,13 +19,16 @@ const Home: NextPage = () => {
         gap-y-14
         mx-4
         mt-6
+        sm:flex-wrap
         md:flex-row
         md:gap-x-28
         md:gap-y-0
         md:justify-between
+        md:px-4
         md:mx-auto
         md:mt-[70px]
-        md:w-[1000px]"
+        md:min-w-[640px]
+        md:max-w-[1000px]"
       >
         <TodayTodo />
         <TomorrowTodo />

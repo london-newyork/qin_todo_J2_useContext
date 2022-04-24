@@ -31,8 +31,7 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
   };
 
   const handleChangeTask = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    //taskの中に'\n'が入っているため取り除く処理
-    const task = e.target.value.replace("\n", "");
+    const task = e.target.value;
     setTask(task);
   };
 
@@ -58,22 +57,30 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
     }
   };
 
+  //やりたいこと
+  //編集後のリストの下に既存タスクがあったら、エンターでその間に新規リストを追加したい
+  //今の挙動
+  //編集後エンターで空タスクが一個追加されてしまう。
+  //新規追加リストエンターでなぜかeditedを通ってくる。enter3回押さないと下に新規リストが追加されない
+
   const handleOnKeyDown = useCallback(
     (e: KeyboardEventHandler<HTMLTextAreaElement> | RefAttributes<HTMLTextAreaElement> | undefined | any) => {
-      //idがまだない時(デフォルトのタスク)
       const newId = getUniqueId();
       if (!props.id) {
-        if (e.key === "Enter" && !isTyping) {
+        if (e.key === "Enter" && !isTyping && !e.shiftKey) {
           props.setTaskList((prev) => {
             return [{ id: newId, task }, ...prev];
           });
           //初期化することで前の内容のコピーを防ぐ
           setTask("");
         }
+        // console.log("add task");
+
         return;
-      } else {
-        //IDがすでにある時(編集時)
-        if (e.key === "Enter" && !isTyping) {
+      }
+      //IDがすでにある時(編集時)
+      if (props.id) {
+        if (e.key === "Enter" && !isTyping && !e.shiftKey) {
           props.setTaskList((prev: Task[]) => {
             const editedTask = prev.map((item) => {
               if (item.id === props.id) {
@@ -86,11 +93,13 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
             return [{ id: newId, task: "" }, ...editedTask];
           });
         }
+        // console.log("edited");
         return;
       }
     },
     [task, props, isTyping]
   );
+  // console.log(props);
 
   return (
     <div className="mt-[7px] ml-2 w-[200px]">
@@ -109,6 +118,8 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
                   focus:outline-none
                   caret-[#F43F5E]
                   resize-none
+                  focus-within:outline-none
+                  outline-none
         `}
         onCompositionStart={handleCompositionStart}
         onCompositionEnd={handleCompositionEnd}

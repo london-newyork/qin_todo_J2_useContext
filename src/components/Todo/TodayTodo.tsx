@@ -53,12 +53,14 @@ export const TodayTodo = () => {
             );
           })
         : null}
-      <TodoItemGroup>
-        <TodoLayouts>
-          <PlusBtn />
-          <TodoItem task={""} setTaskList={setTodayTask} />
-        </TodoLayouts>
-      </TodoItemGroup>
+      {todayTask.length === 0 ? (
+        <TodoItemGroup>
+          <TodoLayouts>
+            <PlusBtn />
+            <TodoItem task={""} setTaskList={setTodayTask} />
+          </TodoLayouts>
+        </TodoItemGroup>
+      ) : null}
     </div>
   );
 };
