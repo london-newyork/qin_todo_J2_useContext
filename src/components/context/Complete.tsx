@@ -3,7 +3,6 @@ import { useRef } from "react";
 import { createContext } from "react";
 
 export const CompleteContext = createContext<{
-  // completeRef: Ref<HTMLTextAreaElement> | undefined|  HTMLTextAreaElement | RefObject<HTMLTextAreaElement> | null;
   completeRef: Ref<HTMLTextAreaElement> | undefined;
 }>({ completeRef: undefined });
 
