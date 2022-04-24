@@ -15,7 +15,6 @@ type TodoItemProps = {
   task: string;
   setTaskList: Dispatch<SetStateAction<Task[]>>;
   plusBtnClick?: () => void;
-  // completeRef: Ref<HTMLTextAreaElement> | undefined
 };
 
 export const TodoItem: VFC<TodoItemProps> = (props) => {
@@ -32,8 +31,7 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
   };
 
   const handleChangeTask = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    //taskの中に'\n'が入っているため取り除く処理
-    const task = e.target.value.replace("\n", "");
+    const task = e.target.value;
     setTask(task);
   };
 
@@ -61,47 +59,49 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
 
   const handleOnKeyDown = useCallback(
     (e: KeyboardEventHandler<HTMLTextAreaElement> | RefAttributes<HTMLTextAreaElement> | undefined | any) => {
-      //find
-      if (!task) return;
-      //idがまだない時
+      const newId = getUniqueId();
       if (!props.id) {
-        if (e.key === "Enter" && !isTyping) {
-          const newId = getUniqueId();
+        if (e.key === "Enter" && !isTyping && !e.shiftKey) {
           props.setTaskList((prev) => {
             return [{ id: newId, task }, ...prev];
           });
           //初期化することで前の内容のコピーを防ぐ
           setTask("");
         }
+        // console.log("add task");
+
         return;
-      } else {
-        //IDがすでにある時(編集時)
-        if (e.key === "Enter" && !isTyping) {
-          const editedTaskList = props.setTaskList((prev: Task[]) => {
-            if (prev.id === props.id) {
-              prev.map((item) => {
+      }
+      //IDがすでにある時(編集時)
+      if (props.id) {
+        if (e.key === "Enter" && !isTyping && !e.shiftKey) {
+          props.setTaskList((prev: Task[]) => {
+            const editedTask = prev.map((item) => {
+              if (item.id === props.id) {
                 return { ...item, task: task };
-              });
-              return { ...prev };
-            }
+              }
+              //編集後のタスクを追加
+              return item;
+            });
+            //エンターキー押したらさらにその下へ新しくタスクを追加
+            return [{ id: newId, task: "" }, ...editedTask];
           });
-          return editedTaskList;
         }
+        // console.log("edited");
         return;
       }
     },
     [task, props, isTyping]
   );
-
   // console.log(props);
 
   return (
     <div className="mt-[7px] ml-2 w-[200px]">
       <TextareaAutosize
         name="complete"
-        placeholder={props.plusBtnClick ? (task ? task : "タスクを追加する") : "タスクを追加する"}
+        placeholder={props.id ? "" : task ? task : "タスクを追加する"}
         value={task}
-        ref={completeRef} //CompleteContextから渡ってくる
+        ref={completeRef}
         maxLength={200}
         onKeyUp={handleCountChange}
         onChange={handleChangeTask}
@@ -112,6 +112,8 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
                   focus:outline-none
                   caret-[#F43F5E]
                   resize-none
+                  focus-within:outline-none
+                  outline-none
         `}
         onCompositionStart={handleCompositionStart}
         onCompositionEnd={handleCompositionEnd}
