@@ -1,4 +1,4 @@
-# Qin Todo J2
+# Qin Todo J2　(useContext使用)
 
 （こちらのリポジトリは個人開発用でチームとは別です。）
 
@@ -6,17 +6,25 @@
 
 https://github.com/london-newyork/Qin_Todo_J2
 
+## 完成動画
+
+[![Image from Gyazo](https://i.gyazo.com/92dfed2ee384b1eee733bedec63c8d45.gif)](https://gyazo.com/92dfed2ee384b1eee733bedec63c8d45)
+
+[![Image from Gyazo](https://i.gyazo.com/435835fa630070b78b36ec70e3ff0a54.gif)](https://gyazo.com/435835fa630070b78b36ec70e3ff0a54)
+
 ## 概要
 
+- TodoリストのCRUD処理+複製、見た目上の完了処理をuseStateとuseContextを使って実現した。
 - 途中よりチーム開発と並行し、個人開発も進める。
-  チームは useState で状態管理をし、この個人開発リポジトリでは useContext を試してから GraphQL を使用する。
+  チームは useState で状態管理をし、おのおのの個人の目的達成において、この個人開発リポジトリでは useContextを試した。
+- 該当箇所はラジオボタンとタスクに横線が引かれ、見た目上の完了となる部分。
 
-## メンバー　（4 名）
+## メンバー　（4名、このリポジトリでは途中から個人開発）
 
 - geya
 - yamataso
 - ikk2kk
-- london-newyork
+- london-newyork(途中個人開発)
 
 それぞれのメンバーが、週替わりでリーダーおよびレビュアーを担当する。
 Issue も特定のメンバーではなく、全員が切る経験をする。
