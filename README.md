@@ -14,7 +14,7 @@ https://github.com/london-newyork/Qin_Todo_J2
 
 ## 概要
 
-- TodoリストのCRUD処理+複製、見た目上の完了処理をuseStateとuseContextを使って実現した。
+- TodoリストのCRUD処理+複製機能、見た目上の完了処理をuseStateとuseContextを使って実現した。
 - 途中よりチーム開発と並行し、個人開発も進める。
   チームは useState で状態管理をし、おのおのの個人の目的達成において、この個人開発リポジトリでは useContextを試した。
 - 該当箇所はラジオボタンとタスクに横線が引かれ、見た目上の完了となる部分。
