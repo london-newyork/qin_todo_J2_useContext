@@ -60,6 +60,7 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
   const handleOnKeyDown = useCallback(
     (e: KeyboardEventHandler<HTMLTextAreaElement> | RefAttributes<HTMLTextAreaElement> | undefined | any) => {
       const newId = getUniqueId();
+      //IDがまだない時
       if (!props.id) {
         if (e.key === "Enter" && !isTyping && !e.shiftKey) {
           props.setTaskList((prev) => {
@@ -68,32 +69,24 @@ export const TodoItem: VFC<TodoItemProps> = (props) => {
           //初期化することで前の内容のコピーを防ぐ
           setTask("");
         }
-        // console.log("add task");
-
         return;
-      }
-      //IDがすでにある時(編集時)
-      if (props.id) {
+      } else {
         if (e.key === "Enter" && !isTyping && !e.shiftKey) {
           props.setTaskList((prev: Task[]) => {
             const editedTask = prev.map((item) => {
               if (item.id === props.id) {
                 return { ...item, task: task };
               }
-              //編集後のタスクを追加
               return item;
             });
-            //エンターキー押したらさらにその下へ新しくタスクを追加
             return [{ id: newId, task: "" }, ...editedTask];
           });
         }
-        // console.log("edited");
         return;
       }
     },
     [task, props, isTyping]
   );
-  // console.log(props);
 
   return (
     <div className="mt-[7px] ml-2 w-[200px]">
