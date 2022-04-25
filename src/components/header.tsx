@@ -33,13 +33,6 @@ export const Header: VFC = () => {
       sm:h-[56px]"
     >
       <nav>
-        {/* {items.map(({ href, label }) => {
-          return (
-              <Link key={href} href={href}>
-                <a style={{ display: "inline-block", padding: 12 }}>{label}</a>
-              </Link>
-          );
-        })} */}
         <div
           className="
           flex
@@ -60,20 +53,9 @@ export const Header: VFC = () => {
             md:py-[28px]
           "
           >
-            <Image
-              className="
-              my-0
-              leading-none
-              border-0"
-              src={`/qin_todo_logo.svg`}
-              alt="The logo of Qin Todo"
-              width="100px"
-              height="21.34px"
-              quality={75}
-              priority={false}
-              loading={"lazy"}
-              unoptimized={false}
-            />
+            <p className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#fc9494] to-[#fa0000]">
+              Todo
+            </p>
           </div>
           <div
             className="
@@ -95,7 +77,7 @@ export const Header: VFC = () => {
               target={
                 <Image
                   className="object-cover rounded-full"
-                  src={`/shimabu_icon.jpeg`}
+                  src={`/dog_icon.jpeg`}
                   alt="account_image"
                   width={36}
                   height={36}
